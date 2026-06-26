@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The full Raspberry Pi 3 migration for STR1X3VO, including every command, problem, and fix from the move.">
+<link rel="canonical" href="https://str1x3vo.xyz/moving-to-raspberry-pi-setup">
+<meta property="og:site_name" content="STR1X3VO">
+<meta property="og:title" content="How I Migrated My Website to a Raspberry Pi 3">
+<meta property="og:description" content="The full Raspberry Pi 3 migration for STR1X3VO, including every command, problem, and fix from the move.">
+<meta property="og:url" content="https://str1x3vo.xyz/moving-to-raspberry-pi-setup">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://str1x3vo.xyz/images/site-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How I Migrated My Website to a Raspberry Pi 3">
+<meta name="twitter:description" content="The full Raspberry Pi 3 migration for STR1X3VO, including every command, problem, and fix from the move.">
+<meta name="twitter:image" content="https://str1x3vo.xyz/images/site-preview.png">
+<title>How I Migrated My Website to a Raspberry Pi 3 - STR1X3VO</title>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="style.css?v=8">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<nav>
+  <a href="/" class="nav-logo">STR1X3VO</a>
+  <a href="/#blog" class="nav-back">Back to blog</a>
+</nav>
+
+<main id="main" class="article-wrapper">
+  <div class="article-crumbs">
+    <a href="/#blog">Blog</a>
+    <span>/</span>
+    <span>How I Migrated My Website to a Raspberry Pi 3</span>
+  </div>
+
+  <span class="article-tag">Guide</span>
+  <h1 class="article-title">How I Migrated My Website to a Raspberry Pi 3</h1>
+
+  <div class="article-meta">
+    <div>25 MAR 2026</div>
+    <div>7 MIN READ</div>
+    <div>BY <span>STR1X3VO</span></div>
+  </div>
+
+  <div class="article-body">
+
+    <p>A few days ago I posted that the site was moving to a Raspberry Pi 3 my brother gave me. That migration is now done. Here's exactly how I did it - every command, every problem I hit, and how it all ended up working.</p>
+
+    <div class="callout">
+      <strong>// What this covers</strong>
+      Setting up Raspberry Pi OS, installing Nginx, migrating all the site files from the old VM, wiring up the Cloudflare Tunnel, and hardening the server. The full process from a blank SD card to a live site.
+    </div>
+
+    <h2>Why move off the gaming PC</h2>
+
+    <p>The site was running inside a Kali Linux VM on my main gaming PC. It worked - but it meant every time I shut the PC down, the site went offline. Not exactly reliable hosting. The Raspberry Pi 3 pulls around <strong>3 watts</strong> under load, runs Linux natively with no VM overhead, and can sit in the corner of my room running 24/7 without making a sound or adding anything meaningful to the electric bill.</p>
+
+    <p>The hardware was already there. My brother handed it to me months ago and it had been sat in a drawer ever since. Time to actually use it.</p>
+
+    <h2>Step 1 - Flash Raspberry Pi OS</h2>
+
+    <p>Downloaded <strong>Raspberry Pi Imager</strong> on Windows, selected Raspberry Pi OS Lite (64-bit) - no desktop environment needed, this is a server - and flashed it to a microSD card.</p>
+
+    <p>Before ejecting, I used the Imager's advanced settings to pre-configure a few things: set a hostname, enabled SSH, and set a username and password. This means the Pi comes up SSH-ready on first boot with no monitor or keyboard needed - headless from the start.</p>
+
+    <div class="code-block">
+      # Once booted, SSH in from Windows<br>
+      ssh [USERNAME]@[PI_IP]
+    </div>
+
+    <div class="callout">
+      <strong>// Headless setup tip</strong>
+      Always use Raspberry Pi Imager's OS customisation options before flashing. Enabling SSH and setting credentials there saves you connecting a monitor just to get the Pi on the network.
+    </div>
+
+    <h2>Step 2 - First boot setup</h2>
+
+    <p>Once I was in via SSH, standard first steps - update everything and set the timezone:</p>
+
+    <div class="code-block">
+      sudo apt update && sudo apt upgrade -y<br>
+      sudo timedatectl set-timezone Europe/London
+    </div>
+
+    <h2>Step 3 - Install Nginx</h2>
+
+    <p>Same as on the Kali VM - Nginx is what actually serves the HTML files to anyone who visits the site:</p>
+
+    <div class="code-block">
+      sudo apt install nginx -y<br>
+      sudo systemctl enable nginx<br>
+      sudo systemctl start nginx
+    </div>
+
+    <p>Hitting the Pi's local IP in a browser at this point shows the default Nginx welcome page. That means it's working.</p>
+
+    <h2>Step 4 - Copy the site files across</h2>
+
+    <p>All the site files were on my Windows machine - I'd backed them up from the old VM before decommissioning it. Transferring them to the Pi was one SCP command from PowerShell:</p>
+
+    <div class="code-block">
+      scp -r "$env:USERPROFILE\Desktop\website-backup\html\*" [USERNAME]@[PI_IP]:/var/www/html/
+    </div>
+
+    <p>That copies every file from the backup folder straight into the Nginx web root on the Pi. Clean URLs, blog posts, CSS, JavaScript, everything - all transferred in one go.</p>
+
+    <div class="callout">
+      <strong>// ProtonVPN note</strong>
+      If you're running a VPN on Windows and SCP keeps throwing a Permission denied error, that's your VPN routing the traffic away from the local network. Turn it off before running the transfer, or add a static route so [LOCAL_SUBNET] bypasses the tunnel.
+    </div>
+
+    <h2>Step 5 - Fix file permissions</h2>
+
+    <p>After the transfer, Nginx needs to be able to read everything in the web root:</p>
+
+    <div class="code-block">
+      sudo chown -R www-data:www-data /var/www/html<br>
+      sudo chmod -R 755 /var/www/html
+    </div>
+
+    <h2>Step 6 - Configure Nginx</h2>
+
+    <p>I needed clean URLs - no <strong>.html</strong> extensions showing in the address bar - and the same hardening from the old server. Edited the default site config:</p>
+
+    <div class="code-block">
+      sudo nano /etc/nginx/sites-available/default
+    </div>
+
+    <p>Key additions to the location block:</p>
+
+    <div class="code-block">
+      # Clean URLs<br>
+      try_files $uri $uri.html $uri/ =404;<br><br>
+      # Hide Nginx version<br>
+      server_tokens off;<br><br>
+      # Block hidden files<br>
+      location ~ /\. { deny all; }
+    </div>
+
+    <div class="code-block">
+      sudo nginx -t<br>
+      sudo systemctl reload nginx
+    </div>
+
+    <h2>Step 7 - Install Cloudflare Tunnel</h2>
+
+    <p>This is what gets the site on the internet without needing to open any ports on the router. My ISP uses CGNAT so port forwarding isn't an option - the tunnel is the solution. The Pi connects outbound to Cloudflare's network, Cloudflare handles all incoming traffic.</p>
+
+    <p>Raspberry Pi 3 is ARM, so the install is slightly different from the AMD64 version:</p>
+
+    <div class="code-block">
+      wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64 -O cloudflared<br>
+      chmod +x cloudflared<br>
+      sudo mv cloudflared /usr/local/bin/
+    </div>
+
+    <p>Then authenticate, create the tunnel, and wire it to the domain:</p>
+
+    <div class="code-block">
+      cloudflared tunnel login<br>
+      cloudflared tunnel create raspberrypi<br>
+      cloudflared tunnel route dns raspberrypi str1x3vo.xyz<br>
+      sudo cloudflared service install<br>
+      sudo systemctl enable cloudflared<br>
+      sudo systemctl start cloudflared
+    </div>
+
+    <p>At this point - the site is live. Same domain, same URLs, now running off the Pi.</p>
+
+    <h2>Step 8 - Harden the server</h2>
+
+    <p>A server sitting on a residential connection needs protecting. Reinstalled everything from the old setup:</p>
+
+    <p><strong>Fail2ban</strong> - three jails running. SSH bans after 3 failed attempts for 24 hours. Nginx bot scanning and auth brute forcing both covered:</p>
+
+    <div class="code-block">
+      sudo apt install fail2ban -y<br>
+      sudo systemctl enable fail2ban<br>
+      sudo systemctl start fail2ban
+    </div>
+
+    <div class="code-block">
+      sudo fail2ban-client status<br>
+      |- Number of jail: 3<br>
+      `- Jail list: nginx-botsearch, nginx-http-auth, sshd
+    </div>
+
+    <p><strong>SSH key authentication</strong> - the same ed25519 key pair from Windows, public key dropped into <strong>~/.ssh/authorized_keys</strong> on the Pi. Password login disabled once key auth was confirmed working:</p>
+
+    <div class="code-block">
+      # On Windows - copy public key to Pi<br>
+      type $env:USERPROFILE\.ssh\id_ed25519.pub | ssh [USERNAME]@[PI_IP] "cat >> ~/.ssh/authorized_keys"<br><br>
+      # On Pi - disable password login<br>
+      sudo nano /etc/ssh/sshd_config<br>
+      # Set: PasswordAuthentication no<br>
+      sudo systemctl restart ssh
+    </div>
+
+    <h2>The result</h2>
+
+    <p>The gaming PC is no longer hosting anything. The site runs 24/7 off a credit card sized board using 3 watts, in the corner of my room, completely silent. Whether my PC is on, off, or mid-game - the site stays up.</p>
+
+    <p>Same domain. Same URLs. Same everything from the outside. Just a much better setup underneath.</p>
+
+    <div class="callout">
+      <strong>// Final status</strong>
+      Raspberry Pi 3  /  Raspberry Pi OS Lite  /  Nginx  /  Cloudflare Tunnel  /  Fail2ban  /  SSH keys only  /  Always-on  /  3 watts  /  GBP 0 extra cost.
+    </div>
+
+  </div>
+
+
+  <!-- COMMENTS -->
+  <div class="comments-section">
+    <h2 class="comments-title">// Comments</h2>
+    <div id="remark42"></div>
+  </div>
+
+  <div class="article-footer">
+    <a href="/#blog" class="back-btn">Back to blog</a>
+    <span class="share-text">// STR1X3VO.XYZ</span>
+  </div>
+
+</main>
+
+<script src="main.js?v=6"></script>
+<script>
+  var remark_config = {
+    host: "https://str1x3vo.xyz",
+    site_id: "str1x3vo",
+    url: window.location.href,
+    components: ["embed"],
+    theme: "dark"
+  };
+  (function(c) {
+    for (var i = 0; i < c.length; i++) {
+      var d = document, s = d.createElement("script");
+      s.src = remark_config.host + "/api/remark42/web/" + c[i] + ".js?v=20260425a";
+      s.defer = true;
+      (d.head || d.body).appendChild(s);
+    }
+  })(remark_config.components);
+</script>
+</body>
+</html>
+
+
+
+

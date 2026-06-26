@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A full Assetto Corsa performance audit covering the exact settings and fixes that pulled my rig out of a 47 FPS mess.">
+<link rel="canonical" href="https://str1x3vo.xyz/assettocorsa-fps-fixes">
+<meta property="og:site_name" content="STR1X3VO">
+<meta property="og:title" content="Why Assetto Corsa Was Running at 47 FPS (And How I Fixed It)">
+<meta property="og:description" content="A full Assetto Corsa performance audit covering the exact settings and fixes that pulled my rig out of a 47 FPS mess.">
+<meta property="og:url" content="https://str1x3vo.xyz/assettocorsa-fps-fixes">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://str1x3vo.xyz/images/site-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why Assetto Corsa Was Running at 47 FPS (And How I Fixed It)">
+<meta name="twitter:description" content="A full Assetto Corsa performance audit covering the exact settings and fixes that pulled my rig out of a 47 FPS mess.">
+<meta name="twitter:image" content="https://str1x3vo.xyz/images/site-preview.png">
+<title>Why Assetto Corsa Was Running at 47 FPS (And How I Fixed It) - STR1X3VO</title>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="style.css?v=8">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<nav>
+  <a href="/" class="nav-logo">STR1X3VO</a>
+  <a href="/#blog" class="nav-back">Back to blog</a>
+</nav>
+
+<main id="main" class="article-wrapper">
+  <div class="article-crumbs">
+    <a href="/#blog">Blog</a>
+    <span>/</span>
+    <span>Why Assetto Corsa Was Running at 47 FPS (And How I Fixed It)</span>
+  </div>
+
+  <span class="article-tag">Gaming</span>
+
+  <h1 class="article-title">Why Assetto Corsa Was Running at 47 FPS (And How I Fixed It)</h1>
+
+  <div class="article-meta">
+    <div>25 MAR 2026</div>
+    <div>6 MIN READ</div>
+    <div>BY <span>STR1X3VO</span></div>
+  </div>
+
+  <div class="article-body">
+
+    <p>Ryzen 5 5600X. RTX 3050 OC 8GB. 32GB RAM. 1080p. And Assetto Corsa - a game from 2014 - sitting at a rock solid 40 to 47 FPS. Something was wrong.</p>
+
+    <p>I'm running the full setup. <strong>Custom Shaders Patch</strong> preview build by <strong>x4fab</strong>, <strong>Pure</strong> by <strong>Peter Boese</strong>, custom PP filters. The game looks incredible. But it was running like I had a potato in my case instead of a GPU. So I went digging.</p>
+
+    <h2>The Audit</h2>
+
+    <p>AC has two config locations that matter - the game folder at <code><strong>steamapps/common/assettocorsa/cfg/</strong></code> and the user folder at <code><strong>Documents/Assetto Corsa/cfg/</strong></code>. The Documents folder wins. Whatever's in there overrides the game folder. Most people don't know this and end up editing the wrong files.</p>
+
+    <p>CSP adds another layer - <code><strong>Documents/Assetto Corsa/cfg/extension/</strong></code> - where every single CSP module has its own config that overrides the defaults in the game folder. So there's basically three levels of config that all interact with each other.</p>
+
+    <p>I went through all of it. Here's what I found.</p>
+
+    <h2>The Culprits</h2>
+
+    <p>In rough order of damage done:</p>
+
+    <div class="callout">
+      <strong>// particles_fx.ini - WINDSCREEN LIMIT=100000</strong><br>
+      One hundred thousand windscreen rain droplet particles. Each one rendered, sorted, and composited every frame. This alone was silently eating frames in the background every single session, rain or shine.
+    </div>
+
+    <div class="callout">
+      <strong>// particles_fx.ini - MARBLES LIMIT=120000</strong><br>
+      Same story. 120k rubber marble particles left on track. Most tracks don't even generate that many in a full race weekend. The budget was there, the GPU was spending it whether it needed to or not.
+    </div>
+
+    <p>Both of those are CSP particle systems that default to sensible values - but somewhere along the way mine had been cranked to absurd levels. Dropped windscreen to <strong>20k</strong> and marbles to <strong>50k</strong>. Zero visual difference. Instant headroom recovered.</p>
+
+    <div class="callout">
+      <strong>// video.ini - AASAMPLES=8</strong><br>
+      MSAA 8x. On a 3050. At 1080p. CSP already runs CMAA2 post-process anti-aliasing on top of whatever AC's native AA does - so I was paying 8x MSAA cost for edges that were getting smoothed twice. Dropped to <strong>4x</strong>. The difference is invisible once CMAA2 does its pass.
+    </div>
+
+    <div class="callout">
+      <strong>// video.ini - CUBEMAP SIZE=2048 + MIRROR SIZE=2048</strong><br>
+      Both four times larger than the recommended defaults. The cubemap is what gives car paint its dynamic reflections. 2048 per face, six faces, updating two per frame - expensive. Mirror at 2048 with HQ mode on top. Both dropped to <strong>1024</strong>. Still look sharp, fraction of the cost.
+    </div>
+
+    <div class="callout">
+      <strong>// extra_fx.ini - SSGI ENABLED=1, INTENSITY=2, SCALE=1</strong><br>
+      Screen Space Global Illumination at full resolution with intensity doubled. SSGI tries to fake light bouncing off surfaces back onto other surfaces. One of the heaviest effects CSP offers. Disabled it - HBAO ambient occlusion is still active and covers most of what SSGI was doing visually.
+    </div>
+
+    <div class="callout">
+      <strong>// extra_fx.ini - HBAO RADIUS=2.4, EXP=2.4</strong><br>
+      HBAO+ ambient occlusion with a very large sampling radius. Double the default values. Pulled them back to sensible levels. Still looks great - just not computing twice as far out as it needs to.
+    </div>
+
+    <h2>The Bonus Find - A Track Crash</h2>
+
+    <p>While testing, <strong>Shuto Revival Project Beta / Tatsumi PA</strong> was crashing instantly on load. The crash trace pointed to <code>INIReader::getFloat</code> failing inside <code>SurfacesManager::loadSurfaceDefinitions</code>. Found it in one line inside <code><strong>tatsumi_pa/data/surfaces.ini</strong></code>:</p>
+
+    <div class="code-block">
+      WAV_PITCH=extended-0
+    </div>
+
+    <p><code>extended-0</code> is a CSP audio extension syntax. AC's native INI reader hits that value before CSP can intercept it, tries to parse it as a float, and throws. Changed it to <code>0</code>. Track loads fine now.</p>
+
+    <h2>Before and After</h2>
+
+    <p>MSI Afterburner benchmark, same track, same car, same conditions:</p>
+
+    <div class="code-block">
+      BEFORE - Average: 46.4 FPS / Min: 30.2 / Max: 50.0 / 1% low: 32.6<br>
+      AFTER  - Average: 48.6 FPS / Min: 43.2 / Max: 50.0 / 1% low: 42.1
+    </div>
+
+    <p>The average didn't move much - but look at the minimums. Before: <strong>30.2 FPS</strong> with a 1% low of <strong>32.6</strong>. After: <strong>43.2 minimum</strong> with a 1% low of <strong>42.1</strong>. The floor came up massively. That's what was making the game feel stuttery - not the average FPS, but those drops into the low 30s.</p>
+
+    <p>The 50 FPS ceiling is G-Sync Compatible doing its half-rate lock thing. Capped the game at <strong>60 FPS</strong> via <code><strong>FPS_CAP_MS=16</strong></code> in <code><strong>Documents/cfg/video.ini</strong></code>. Locked, smooth, done.</p>
+
+    <h2>The Full Change List</h2>
+
+    <div class="code-block">
+      <strong>Documents/cfg/video.ini</strong><br>
+      &nbsp;&nbsp;AASAMPLES: 8 â†’ 4<br>
+      &nbsp;&nbsp;CUBEMAP SIZE: 2048 â†’ 1024<br>
+      &nbsp;&nbsp;MIRROR SIZE: 2048 â†’ 1024<br>
+      &nbsp;&nbsp;FPS_CAP_MS: 0 â†’ 16 (60 FPS cap)<br>
+      <br>
+      <strong>Documents/cfg/extension/extra_fx.ini</strong><br>
+      &nbsp;&nbsp;SSGI ENABLED: 1 â†’ 0<br>
+      &nbsp;&nbsp;HBAO RADIUS: 2.4 â†’ 1.2<br>
+      &nbsp;&nbsp;HBAO EXP: 2.4 â†’ 1.6<br>
+      <br>
+      <strong>Documents/cfg/extension/particles_fx.ini</strong><br>
+      &nbsp;&nbsp;WINDSCREEN LIMIT: 100000 â†’ 20000<br>
+      &nbsp;&nbsp;MARBLES LIMIT: 120000 â†’ 50000<br>
+      <br>
+      <strong>Documents/cfg/extension/lighting_fx.ini</strong><br>
+      &nbsp;&nbsp;CARS_WITH_LIGHTS: 10 â†’ 5<br>
+      <br>
+      <strong>Documents/cfg/extension/weather_fx.ini</strong><br>
+      &nbsp;&nbsp;USE_COMPATIBLE_SKY_SHADER: 1 â†’ 0<br>
+      <br>
+      <strong>content/tracks/shuto_revival_project_beta/tatsumi_pa/data/surfaces.ini</strong><br>
+      &nbsp;&nbsp;WAV_PITCH: extended-0 â†’ 0
+    </div>
+
+    <p>The game still looks exactly the same. Pure is still doing its thing. CSP is still running. The only difference is it's no longer spending GPU time on 100k invisible particles and a full-res global illumination pass on a mid-range GPU.</p>
+
+    <p>If you're running CSP + Pure and wondering why your frames are low - go check your <strong>Documents configs</strong>. Not the game folder. <strong>The Documents folder.</strong></p>
+
+  </div>
+
+
+  <!-- COMMENTS -->
+  <div class="comments-section">
+    <h2 class="comments-title">// Comments</h2>
+    <div id="remark42"></div>
+  </div>
+
+  <div class="article-footer">
+    <a href="/#blog" class="back-btn">Back to blog</a>
+    <span class="share-text">// STR1X3VO.XYZ</span>
+  </div>
+
+</main>
+
+<script src="main.js?v=6"></script>
+<script>
+  var remark_config = {
+    host: "https://str1x3vo.xyz",
+    site_id: "str1x3vo",
+    url: window.location.href,
+    components: ["embed"],
+    theme: "dark"
+  };
+  (function(c) {
+    for (var i = 0; i < c.length; i++) {
+      var d = document, s = d.createElement("script");
+      s.src = remark_config.host + "/api/remark42/web/" + c[i] + ".js?v=20260425a";
+      s.defer = true;
+      (d.head || d.body).appendChild(s);
+    }
+  })(remark_config.components);
+</script>
+</body>
+</html>
+
+
+
+

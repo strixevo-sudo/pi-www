@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STR1X3VO — Sim racing, guides, self-hosted builds</title>
+<meta name="description" content="A working portfolio of sim racing setups, self-hosted infrastructure, and the gaming fixes behind them.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css?v=10">
+</head>
+<body>
+
+<header class="topbar">
+  <nav>
+    <a href="#" class="logo"><span class="dot"></span> STR1X3VO</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#writing">Writing</a></li>
+        <li><a href="#downloads">Downloads</a></li>
+      </ul>
+      <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-theme-set="dark" class="active">Dark</button>
+        <button type="button" data-theme-set="light">Light</button>
+      </div>
+    </div>
+  </nav>
+  <div class="splits">
+    <div class="split active" data-target="intro"><span class="split-num">S1</span>Intro</div>
+    <div class="split" data-target="work"><span class="split-num">S2</span>Work</div>
+    <div class="split" data-target="writing"><span class="split-num">S3</span>Writing</div>
+    <div class="split" data-target="downloads"><span class="split-num">S4</span>Downloads</div>
+  </div>
+</header>
+
+<section class="hero" id="intro">
+  <div>
+    <span class="hero-eyebrow">Sim racing · self-hosting · build logs</span>
+    <h1>I build, break, and document the fixes that <span class="accent">actually work.</span></h1>
+    <p class="hero-desc">A working portfolio of sim racing setups, self-hosted infrastructure, and the gaming fixes behind them — written so the next person doesn't have to figure it out from scratch.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>11</strong><span>Published posts</span></div>
+      <div class="hero-stat"><strong>5</strong><span>Live downloads</span></div>
+      <div class="hero-stat"><strong>Pi 3</strong><span>Self-hosted on</span></div>
+    </div>
+    <div class="btn-row">
+      <a href="#work" class="btn btn-primary">View the work</a>
+      <a href="#writing" class="btn btn-outline">Read the journal</a>
+    </div>
+  </div>
+
+  <aside class="telemetry">
+    <div class="telemetry-head">
+      <span class="telemetry-kicker">System status</span>
+      <span class="telemetry-status live">Online</span>
+    </div>
+    <div class="telemetry-speed">
+      <span class="telemetry-speed-value">100%</span>
+      <span class="telemetry-speed-unit">uptime</span>
+    </div>
+    <p class="telemetry-meta">Self-hosted on a Raspberry Pi 3 behind Cloudflare Tunnel — this site is part of the build, not a mockup.</p>
+    <div class="telemetry-grid">
+      <div class="t-item"><span class="t-label">Host</span><span class="t-value">Raspberry Pi 3B</span></div>
+      <div class="t-item"><span class="t-label">Proxy</span><span class="t-value">Cloudflare Tunnel</span></div>
+      <div class="t-item"><span class="t-label">Server</span><span class="t-value">Nginx · hardened</span></div>
+      <div class="t-item"><span class="t-label">Cost</span><span class="t-value">€0 / month</span></div>
+    </div>
+  </aside>
+</section>
+
+<section class="section" id="work">
+  <div class="section-head">
+    <div>
+      <span class="section-kicker">Selected work</span>
+      <h2 class="section-title">Things I've built, and the stack behind each one.</h2>
+    </div>
+    <p class="section-lead">From the site you're looking at to the configs in the downloads — every piece here is live, self-hosted, or shipped.</p>
+  </div>
+
+  <div class="work-grid">
+    <article class="work-card">
+      <div class="work-top"><h3>This site</h3><span class="work-status live">Live</span></div>
+      <p>Self-hosted on a Raspberry Pi 3 behind Cloudflare Tunnel — no monthly hosting fees, fully hardened Nginx setup.</p>
+      <div class="tech-tags"><span class="tech-tag">Nginx</span><span class="tech-tag">Cloudflare Tunnel</span><span class="tech-tag">Raspberry Pi</span></div>
+      <a href="#writing" class="work-link">Read the build log →</a>
+    </article>
+
+    <article class="work-card">
+      <div class="work-top"><h3>AC telemetry logger</h3><span class="work-status live">Live</span></div>
+      <p>Logs Assetto Corsa telemetry and ships it to a friend for analysis — full setup walkthrough including firewall rules.</p>
+      <div class="tech-tags"><span class="tech-tag">Python</span><span class="tech-tag">Cloudflare</span></div>
+      <a href="#writing" class="work-link">Read the guide →</a>
+    </article>
+
+    <article class="work-card">
+      <div class="work-top"><h3>AC CSP &amp; video configs</h3><span class="work-status live">Live</span></div>
+      <p>Personal Custom Shaders Patch and video.ini setups — tuned for clean visuals and stable frame pacing on an RTX 3050.</p>
+      <div class="tech-tags"><span class="tech-tag">Config</span><span class="tech-tag">CSP</span></div>
+      <a href="#downloads" class="work-link">Download configs →</a>
+    </article>
+
+    <article class="work-card">
+      <div class="work-top"><h3>PC optimisation guide</h3><span class="work-status live">Live</span></div>
+      <p>A complete Windows 10/11 gaming optimisation guide — no placebo tweaks, just the changes that move the needle.</p>
+      <div class="tech-tags"><span class="tech-tag">Windows</span><span class="tech-tag">PDF</span></div>
+      <a href="#downloads" class="work-link">Get the PDF →</a>
+    </article>
+
+    <article class="work-card">
+      <div class="work-top"><h3>Config &amp; overlay pack</h3><span class="work-status">Soon</span></div>
+      <p>A bundled config and overlay pack for sim racing setups — currently being cleaned up before release.</p>
+      <div class="tech-tags"><span class="tech-tag">Config</span><span class="tech-tag">Overlay</span></div>
+      <a href="#downloads" class="work-link">In progress →</a>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="writing">
+  <div class="section-head">
+    <div>
+      <span class="section-kicker">Writing</span>
+      <h2 class="section-title">Notes from the builds — start with one, then fall into the rest.</h2>
+    </div>
+    <p class="section-lead">Practical posts that help immediately, and a few personal ones that explain how this all came together.</p>
+  </div>
+
+  <div class="feature-grid">
+    <a href="#" class="feature-lead">
+      <span class="feature-meta">Featured essay — 25 Apr 2026 — 6 min read</span>
+      <h3>What a Real Design Review Changed on My Website</h3>
+      <p>An outside reviewer tore into the site, the fixes went deeper than CSS, and the deployment path got cleaned up properly along the way.</p>
+    </a>
+    <div class="feature-side">
+      <a href="#" class="story-card">
+        <span class="story-card-label">Walkthrough</span>
+        <h3>How to Log AC Telemetry and Send It to a Friend</h3>
+        <p>Python installs, firewall rules, Cloudflare Tunnel, and the full setup.</p>
+      </a>
+      <a href="#" class="story-card">
+        <span class="story-card-label">Popular fix</span>
+        <h3>Why Assetto Corsa Was Running at 47 FPS</h3>
+        <p>RTX 3050, CSP preview, Pure, and the exact settings.</p>
+      </a>
+    </div>
+  </div>
+
+  <div class="blog-grid">
+    <a href="#" class="blog-card">
+      <span class="blog-tag">Guide</span>
+      <h3>How I Migrated My Website to a Raspberry Pi 3</h3>
+      <p>From blank SD card to hardened always-on server, with every command that mattered.</p>
+      <div class="blog-meta"><span>25 APR 2026</span><span>7 MIN</span></div>
+    </a>
+    <a href="#" class="blog-card">
+      <span class="blog-tag">Guide</span>
+      <h3>Windows 10 Gaming Optimisations That Actually Matter</h3>
+      <p>No placebo tweaks — just the changes that genuinely get Windows out of your way.</p>
+      <div class="blog-meta"><span>25 MAR 2026</span><span>5 MIN</span></div>
+    </a>
+    <a href="#" class="blog-card">
+      <span class="blog-tag">Personal</span>
+      <h3>The Origin Story</h3>
+      <p>Game Boy at four, getting into PCs, and how all of it fed into building this site.</p>
+      <div class="blog-meta"><span>23 MAR 2026</span><span>6 MIN</span></div>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="downloads">
+  <div class="section-head">
+    <div>
+      <span class="section-kicker">Downloads</span>
+      <h2 class="section-title">Files worth keeping offline.</h2>
+    </div>
+    <p class="section-lead">Configs and guides that are part of the work, not scraps parked under a post.</p>
+  </div>
+
+  <div class="download-list">
+    <div class="download-row">
+      <span class="download-type">INI</span>
+      <div><h3>Assetto Corsa Video Settings</h3><p>Clean visuals and better frame pacing.</p></div>
+      <span class="download-state is-live">Live</span>
+      <a href="#" class="download-btn">Download</a>
+    </div>
+    <div class="download-row">
+      <span class="download-type">INI</span>
+      <div><h3>Assetto Corsa CSP Settings</h3><p>Custom Shaders Patch config, ready to test.</p></div>
+      <span class="download-state is-live">Live</span>
+      <a href="#" class="download-btn">Download</a>
+    </div>
+    <div class="download-row">
+      <span class="download-type">PDF</span>
+      <div><h3>PC Optimisation Guide</h3><p>Full Windows 10/11 gaming optimisation guide.</p></div>
+      <span class="download-state is-live">Live</span>
+      <a href="#" class="download-btn">Download</a>
+    </div>
+    <div class="download-row">
+      <span class="download-type">CFG</span>
+      <div><h3>Config Pack v1.0</h3><p>On the roadmap for a proper drop.</p></div>
+      <span class="download-state">Soon</span>
+      <a href="#" class="download-btn is-disabled">Coming soon</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <span>STR1X3VO — SIM RACING, GUIDES, SELF-HOSTED BUILDS</span>
+  <span>str1x3vo.xyz</span>
+</footer>
+
+<script src="main.js?v=10"></script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="STR1X3VO live iRacing dashboard with session updates, stream, telemetry, and recent results.">
+<link rel="canonical" href="https://str1x3vo.xyz/iracing">
+<meta property="og:site_name" content="STR1X3VO">
+<meta property="og:title" content="STR1X3VO Race Control">
+<meta property="og:description" content="Live iRacing dashboard with session updates, stream, telemetry, and recent results.">
+<meta property="og:url" content="https://str1x3vo.xyz/iracing">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://str1x3vo.xyz/images/site-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="STR1X3VO Race Control">
+<meta name="twitter:description" content="Live iRacing dashboard with session updates, stream, telemetry, and recent results.">
+<meta name="twitter:image" content="https://str1x3vo.xyz/images/site-preview.png">
+<title>Race Control - STR1X3VO</title>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&family=Teko:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="style.css?v=8">
+</head>
+<body class="iracing-page">
+<a href="#main" class="skip-link">Skip to content</a>
+
+<nav>
+  <a href="/" class="nav-logo">STR1X3VO</a>
+  <a href="/#iracing" class="nav-back">Back to home</a>
+</nav>
+
+<main id="main" class="iracing-series-page" data-iracing-root="dashboard">
+  <section class="iracing-series-hero reveal">
+    <div class="iracing-series-headline">
+      <div class="iracing-series-badge">
+        <span class="iracing-series-badge-mark">SXV</span>
+        <div class="iracing-series-badge-copy">
+          <span>STR1X3VO IRACING</span>
+          <strong>Race Control</strong>
+        </div>
+      </div>
+      <span class="iracing-status-pill" data-iracing-status-pill data-iracing-field="statusLabel">Loading</span>
+    </div>
+
+    <div class="iracing-series-layout">
+      <div class="iracing-series-copy">
+        <p class="iracing-series-kicker">LIVE DASHBOARD // STREAM // TELEMETRY</p>
+        <h1 class="iracing-series-title">
+          <span>STR1X3VO</span>
+          <span>Live Dashboard</span>
+        </h1>
+        <p class="iracing-series-summary" data-iracing-field="headline">Waiting for telemetry.</p>
+
+        <div class="iracing-series-meta-grid">
+          <article class="iracing-series-meta-card">
+            <span>Venue</span>
+            <strong data-iracing-field="track">No active track</strong>
+          </article>
+          <article class="iracing-series-meta-card">
+            <span>Series</span>
+            <strong data-iracing-field="series">Offline</strong>
+          </article>
+          <article class="iracing-series-meta-card">
+            <span>Car</span>
+            <strong data-iracing-field="car">Waiting for car data</strong>
+          </article>
+          <article class="iracing-series-meta-card">
+            <span>Last update</span>
+            <strong data-iracing-field="updatedAt">Waiting for updates</strong>
+          </article>
+        </div>
+
+        <div class="iracing-series-actions">
+          <button type="button" class="btn btn-primary" data-iracing-refresh>Refresh Now</button>
+          <a href="/#iracing" class="btn btn-outline">Back to home</a>
+        </div>
+      </div>
+
+      <aside class="iracing-tower-card">
+        <div class="iracing-tower-head">
+          <span class="iracing-tower-label">Timing Tower</span>
+          <span class="iracing-tower-copy">Live session board</span>
+        </div>
+
+        <div class="iracing-tower-grid">
+          <div class="iracing-tower-cell is-primary">
+            <span>Overall</span>
+            <strong data-iracing-field="position">--</strong>
+          </div>
+          <div class="iracing-tower-cell">
+            <span>Class</span>
+            <strong data-iracing-field="positionClass">--</strong>
+          </div>
+          <div class="iracing-tower-cell">
+            <span>Phase</span>
+            <strong data-iracing-field="phase">--</strong>
+          </div>
+          <div class="iracing-tower-cell">
+            <span>Session</span>
+            <strong data-iracing-field="sessionType">--</strong>
+          </div>
+          <div class="iracing-tower-cell">
+            <span>Status</span>
+            <strong data-iracing-field="connection">--</strong>
+          </div>
+          <div class="iracing-tower-cell">
+            <span>Latest finish</span>
+            <strong data-iracing-field="latestResult">--</strong>
+          </div>
+        </div>
+
+        <div class="iracing-flag-row">
+          <div class="iracing-flag-chip">
+            <span>Best lap</span>
+            <strong data-iracing-field="bestLap">--</strong>
+          </div>
+          <div class="iracing-flag-chip">
+            <span>Last lap</span>
+            <strong data-iracing-field="lastLap">--</strong>
+          </div>
+          <div class="iracing-flag-chip">
+            <span>Fuel</span>
+            <strong data-iracing-field="fuelPct">--</strong>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="iracing-series-marquee reveal">
+    <article class="iracing-marquee-card">
+      <span>Sessions / 7d</span>
+      <strong data-iracing-field="sessionsWeek">0</strong>
+      <small>Starts recorded over the last seven days.</small>
+    </article>
+    <article class="iracing-marquee-card">
+      <span>Incidents / 7d</span>
+      <strong data-iracing-field="incidentsWeek">0</strong>
+      <small>Incident count from the last seven days.</small>
+    </article>
+    <article class="iracing-marquee-card">
+      <span>Podiums / 7d</span>
+      <strong data-iracing-field="podiumsWeek">0</strong>
+      <small>Top-three finishes from recent sessions.</small>
+    </article>
+    <article class="iracing-marquee-card is-featured">
+      <span>Live update</span>
+      <strong data-iracing-field="headline">Waiting for telemetry</strong>
+      <small>Live session updates, telemetry, and recent race results.</small>
+    </article>
+  </section>
+
+  <section class="iracing-panel iracing-panel-stream reveal">
+    <div class="iracing-panel-head">
+      <span class="section-num">Live Broadcast</span>
+      <h2>Twitch Stream</h2>
+    </div>
+
+    <div class="iracing-stream-shell">
+      <div class="iracing-stream-player">
+        <div class="iracing-stream-frame-shell">
+          <iframe
+            class="iracing-stream-frame"
+            src="https://player.twitch.tv/?channel=strix3vo&parent=str1x3vo.xyz&parent=www.str1x3vo.xyz&muted=true&autoplay=false"
+            allowfullscreen
+            scrolling="no"
+            loading="lazy"
+            title="strix3vo Twitch livestream"
+          ></iframe>
+        </div>
+      </div>
+
+      <aside class="iracing-stream-copy">
+        <span class="iracing-stream-tag">Live Stream</span>
+        <h3>Watch the session live when the stream is up.</h3>
+        <p>The player stays right here on the dashboard so people can follow the race feed and the stream in one place.</p>
+
+        <div class="iracing-stream-links">
+          <a href="https://www.twitch.tv/strix3vo" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Watch on Twitch</a>
+          <a href="https://discord.com/invite/r6EwyC5f" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Join Discord</a>
+        </div>
+
+        <div class="iracing-stream-note">
+          <span>Note</span>
+          <strong>If the channel is offline, Twitch will show the offline screen here.</strong>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="iracing-series-grid reveal">
+    <article class="iracing-panel iracing-panel-feed">
+      <div class="iracing-panel-head">
+        <span class="section-num">Race Control</span>
+        <h2>Session Feed</h2>
+      </div>
+      <ul class="iracing-feed-list iracing-feed-list-wide" data-iracing-events-list>
+        <li class="iracing-empty">No updates yet.</li>
+      </ul>
+    </article>
+
+    <article class="iracing-panel iracing-panel-tech">
+      <div class="iracing-panel-head">
+        <span class="section-num">Telemetry</span>
+        <h2>Car Telemetry</h2>
+      </div>
+
+      <div class="iracing-tech-grid">
+        <article class="iracing-tech-stat">
+          <span>Speed</span>
+          <strong data-iracing-field="speedMph">--</strong>
+        </article>
+        <article class="iracing-tech-stat">
+          <span>Fuel load</span>
+          <strong data-iracing-field="fuelPct">--</strong>
+        </article>
+        <article class="iracing-tech-stat">
+          <span>Incidents</span>
+          <strong data-iracing-field="incidents">--</strong>
+        </article>
+        <article class="iracing-tech-stat">
+          <span>Tow time</span>
+          <strong data-iracing-field="tow">--</strong>
+        </article>
+        <article class="iracing-tech-stat">
+          <span>Required repairs</span>
+          <strong data-iracing-field="repair">--</strong>
+        </article>
+        <article class="iracing-tech-stat">
+          <span>Session</span>
+          <strong data-iracing-field="sessionType">--</strong>
+        </article>
+      </div>
+
+      <div class="iracing-tech-notes">
+        <div class="iracing-tech-note">
+          <span>Track state</span>
+          <strong data-iracing-field="phase">Offline</strong>
+        </div>
+        <div class="iracing-tech-note">
+          <span>Car</span>
+          <strong data-iracing-field="car">Waiting for car data</strong>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="iracing-series-grid iracing-series-grid-bottom reveal">
+    <article class="iracing-panel iracing-panel-results">
+      <div class="iracing-panel-head">
+        <span class="section-num">Recent Results</span>
+        <h2>Recent Results</h2>
+      </div>
+      <ul class="iracing-results-list" data-iracing-results-list>
+        <li class="iracing-empty">No recent results yet.</li>
+      </ul>
+    </article>
+
+    <article class="iracing-panel iracing-panel-week">
+      <div class="iracing-panel-head">
+        <span class="section-num">Weekly Activity</span>
+        <h2>Last Seven Days</h2>
+      </div>
+      <div class="iracing-week-grid" data-iracing-week-grid>
+        <div class="iracing-empty">Weekly activity not loaded yet.</div>
+      </div>
+    </article>
+  </section>
+</main>
+
+<script src="main.js?v=4"></script>
+<script src="iracing.js?v=6"></script>
+</body>
+</html>

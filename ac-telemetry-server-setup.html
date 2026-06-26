@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="How I helped tune a remote Assetto Corsa setup by logging telemetry, exporting the data, and reviewing it off-site.">
+<link rel="canonical" href="https://str1x3vo.xyz/ac-telemetry-server-setup">
+<meta property="og:site_name" content="STR1X3VO">
+<meta property="og:title" content="How to Log AC Telemetry and Send It to a Friend">
+<meta property="og:description" content="How I helped tune a remote Assetto Corsa setup by logging telemetry, exporting the data, and reviewing it off-site.">
+<meta property="og:url" content="https://str1x3vo.xyz/ac-telemetry-server-setup">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://str1x3vo.xyz/images/site-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Log AC Telemetry and Send It to a Friend">
+<meta name="twitter:description" content="How I helped tune a remote Assetto Corsa setup by logging telemetry, exporting the data, and reviewing it off-site.">
+<meta name="twitter:image" content="https://str1x3vo.xyz/images/site-preview.png">
+<title>How to Log AC Telemetry and Send It to a Friend - STR1X3VO</title>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="style.css?v=8">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<nav>
+  <a href="/" class="nav-logo">STR1X3VO</a>
+  <a href="/#blog" class="nav-back">Back to blog</a>
+</nav>
+
+<main id="main" class="article-wrapper">
+  <div class="article-crumbs">
+    <a href="/#blog">Blog</a>
+    <span>/</span>
+    <span>How to Log AC Telemetry and Send It to a Friend</span>
+  </div>
+
+  <span class="article-tag">Guide</span>
+
+  <h1 class="article-title">How to Log AC Telemetry and Send It to a Friend for Analysis</h1>
+
+  <div class="article-meta">
+    <div>27 MAR 2026</div>
+    <div>6 MIN READ</div>
+    <div>BY <span>STR1X3VO</span></div>
+  </div>
+
+  <div class="article-body">
+
+    <p>A mate of mine - we'll call him Clyde - wanted help getting his Assetto Corsa setup dialled in. The problem: he's on the other side of the internet. No port forwarding, no shared network. The solution ended up being simple - he ran a telemetry logger during his session, saved everything to a CSV, and sent it over. I analysed it, tweaked his setup, and sent it back. This is how we did it.</p>
+
+    <h2>What You Need</h2>
+
+    <p>The person logging their session needs two things:</p>
+
+    <ul>
+      <li>Assetto Corsa installed and running</li>
+      <li>Python 3 installed</li>
+    </ul>
+
+    <p>That's it. The logger reads AC's built-in shared memory and writes everything to a CSV file. No mods, no apps, no plugins.</p>
+
+    <h2>Step 1 - Install Python</h2>
+
+    <p>If they don't have Python, the easiest way on Windows is winget. Open CMD and run:</p>
+
+    <div class="code-block">
+      winget install Python.Python.3.12
+    </div>
+
+    <p>Close and reopen CMD after it finishes so the PATH updates. Confirm it worked:</p>
+
+    <div class="code-block">
+      python --version
+    </div>
+
+    <div class="callout">
+      <strong>// Note</strong>
+      If winget isn't available, install from python.org. Make sure to tick "Add Python to PATH" during install - otherwise nothing will work.
+    </div>
+
+    <h2>Step 2 - Get the Logger</h2>
+
+    <p>Send them the <code>ac_logger.py</code> file. They can drop it anywhere - Desktop works fine. No dependencies to install, just Python.</p>
+
+    <h2>Step 3 - Run It</h2>
+
+    <p>Before launching AC, open CMD, navigate to wherever the file is, and run:</p>
+
+    <div class="code-block">
+      python ac_logger.py
+    </div>
+
+    <p>The logger sits in the background. It detects when AC goes live automatically and starts writing data. When the session ends, it saves the CSV.</p>
+
+    <div class="callout">
+      <strong>// Important</strong>
+      Start the logger <em>before</em> launching AC, not after. It watches for AC to start and begins logging from the moment the session is live.
+    </div>
+
+    <h2>Step 4 - Find the CSV</h2>
+
+    <p>Session files are saved in the same folder as the script, named by date, car and track:</p>
+
+    <div class="code-block">
+      2026-03-26_23-54-44_swarm_lewi_altezza_kb3k__saidai_koritsu.csv
+    </div>
+
+    <p>One file per session. Send it over - Discord, WeTransfer, whatever works.</p>
+
+    <h2>What's In the CSV</h2>
+
+    <p>The logger captures everything useful for setup analysis at high frequency:</p>
+
+    <ul>
+      <li>Speed, gear, RPM, throttle, brake, steering angle</li>
+      <li>Sideslip angle, yaw rate and oversteer index</li>
+      <li>Tyre temps - inner, mid and outer per corner</li>
+      <li>Tyre pressures, loads and wear per corner</li>
+      <li>Suspension travel and dynamic camber per corner</li>
+      <li>Ride height, CG height, turbo boost, air and road temp</li>
+    </ul>
+
+    <p>That's enough to diagnose tyre temps, suspension behaviour, angle consistency - everything you need to give real setup feedback instead of guessing.</p>
+
+    <h2>What Went Wrong With Clyde</h2>
+
+    <p>Here's what tripped him up so you can skip it:</p>
+
+    <ul>
+      <li>Python wasn't installed - winget sorted it in one command</li>
+      <li>He launched AC before starting the logger - missed the early session data. Start the logger first.</li>
+      <li>Wasn't sure where the CSV was saved - it's in the same folder as the script</li>
+    </ul>
+
+    <p>Once the workflow clicked, it was easy. Session done, CSV sent, setup tweaked, send it back. No live connection needed.</p>
+
+    <h2>Download</h2>
+
+    <p>The logger script bundled and ready to go.</p>
+
+    <a href="/ac_logger.zip" class="btn btn-primary">â†“ Download AC Logger (11MB)</a>
+
+  </div>
+
+
+  <!-- COMMENTS -->
+  <div class="comments-section">
+    <h2 class="comments-title">// Comments</h2>
+    <div id="remark42"></div>
+  </div>
+
+  <div class="article-footer">
+    <a href="/#blog" class="back-btn">Back to blog</a>
+    <span class="share-text">// STR1X3VO.XYZ</span>
+  </div>
+
+</main>
+
+<script src="main.js?v=6"></script>
+<script>
+  var remark_config = {
+    host: "https://str1x3vo.xyz",
+    site_id: "str1x3vo",
+    url: window.location.href,
+    components: ["embed"],
+    theme: "dark"
+  };
+  (function(c) {
+    for (var i = 0; i < c.length; i++) {
+      var d = document, s = d.createElement("script");
+      s.src = remark_config.host + "/api/remark42/web/" + c[i] + ".js?v=20260425a";
+      s.defer = true;
+      (d.head || d.body).appendChild(s);
+    }
+  })(remark_config.components);
+</script>
+</body>
+</html>
+
+
+
+

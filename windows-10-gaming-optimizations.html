@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The Windows 10 gaming optimizations I actually use, without placebo tweaks, registry voodoo, or filler.">
+<link rel="canonical" href="https://str1x3vo.xyz/windows-10-gaming-optimizations">
+<meta property="og:site_name" content="STR1X3VO">
+<meta property="og:title" content="Windows 10 Gaming Optimizations That Actually Matter">
+<meta property="og:description" content="The Windows 10 gaming optimizations I actually use, without placebo tweaks, registry voodoo, or filler.">
+<meta property="og:url" content="https://str1x3vo.xyz/windows-10-gaming-optimizations">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://str1x3vo.xyz/images/site-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Windows 10 Gaming Optimizations That Actually Matter">
+<meta name="twitter:description" content="The Windows 10 gaming optimizations I actually use, without placebo tweaks, registry voodoo, or filler.">
+<meta name="twitter:image" content="https://str1x3vo.xyz/images/site-preview.png">
+<title>Windows 10 Gaming Optimizations - STR1X3VO</title>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="style.css?v=8">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<nav>
+  <a href="/" class="nav-logo">STR1X3VO</a>
+  <a href="/#blog" class="nav-back">Back to blog</a>
+</nav>
+
+<main id="main" class="article-wrapper">
+  <div class="article-crumbs">
+    <a href="/#blog">Blog</a>
+    <span>/</span>
+    <span>Windows 10 Gaming Optimizations That Actually Matter</span>
+  </div>
+
+  <span class="article-tag">Guide</span>
+
+  <h1 class="article-title">Windows 10 Gaming Optimizations That Actually Matter</h1>
+
+  <div class="article-meta">
+    <div>25 MAR 2026</div>
+    <div>5 MIN READ</div>
+    <div>BY <span>STR1X3VO</span></div>
+  </div>
+
+  <div class="article-body">
+
+    <p>Most Windows 10 optimization guides are full of placebo tweaks and registry voodoo that do nothing. This is not that. These are the changes I ran on my own machine - <strong>Ryzen 5 5600X, RTX 3050 8GB, 32GB RAM</strong> - and every single one has a real reason behind it.</p>
+
+    <h2>Step 1 - Slash Your Startup Programs</h2>
+
+    <p>Windows boots and silently launches a load of programs you never asked for. Every one of them is sitting in memory, <strong>eating CPU cycles</strong>, and competing with your game.</p>
+
+    <p>Open PowerShell and run this to see exactly what's auto-starting:</p>
+
+    <div class="code-block">
+      Get-CimInstance Win32_StartupCommand | Select-Object Name, Command, Location | Format-Table -AutoSize
+    </div>
+
+    <p>Go through the list honestly. Ask yourself - do I need this running before I even open it Steam, Discord, your peripheral software - maybe. But <strong>NVIDIA Broadcast</strong>, your torrent client, extra game launchers, <strong>RGB software</strong> Open them when you need them.</p>
+
+    <p>To disable something from startup via PowerShell:</p>
+
+    <div class="code-block">
+      Remove-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run" -Name "AppNameHere"
+    </div>
+
+    <div class="callout">
+      <strong>// Note</strong>
+      System entries like SecurityHealth and your audio driver (RtkAudUService) live in HKLM and need admin PowerShell. Don't touch those - they're not the problem.
+    </div>
+
+    <h2>Step 2 - Enable Game Mode</h2>
+
+    <p>Game Mode tells Windows to prioritize your game's threads over background processes. It's off by default on some machines. Turn it on:</p>
+
+    <div class="code-block">
+      Set-ItemProperty -Path "HKCU:\Software\Microsoft\GameBar" -Name "AllowAutoGameMode" -Value 1
+      Set-ItemProperty -Path "HKCU:\Software\Microsoft\GameBar" -Name "AutoGameModeEnabled" -Value 1
+    </div>
+
+    <h2>Step 3 - Enable HAGS</h2>
+
+    <p>Hardware Accelerated GPU Scheduling moves GPU memory management off the CPU and onto the GPU itself. On modern hardware - <strong>RTX 2000 series and up, RX 5000 series and up</strong> - this <strong>reduces CPU overhead and can lower latency</strong>.</p>
+
+    <p>Run this in an <strong>admin</strong> PowerShell:</p>
+
+    <div class="code-block">
+      Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" -Name "HwSchMode" -Value 2
+    </div>
+
+    <p><strong>Reboot after.</strong> It won't take effect until you do.</p>
+
+    <div class="callout">
+      <strong>// Note</strong>
+      If you're on older hardware or running an older driver, HAGS can cause instability. If you see issues after enabling it, set the value back to 1 and reboot.
+    </div>
+
+    <h2>Step 4 - Visual Effects to Best Performance</h2>
+
+    <p>Windows wastes GPU and CPU resources on animations and transparency effects that look nice but serve zero purpose while gaming. Strip them out:</p>
+
+    <div class="code-block">
+      Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "DragFullWindows" -Value "0"
+      Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "MenuShowDelay" -Value "0"
+      Set-ItemProperty -Path "HKCU:\Control Panel\Desktop\WindowMetrics" -Name "MinAnimate" -Value "0"
+      Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarAnimations" -Value 0
+      Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\DWM" -Name "EnableAeroPeek" -Value 0
+    </div>
+
+    <p>You can also hit this via <strong>System Properties</strong> â†’ Advanced â†’ Performance Settings â†’ <strong>Adjust for best performance</strong>, then manually re-enable smooth edges of screen fonts if you want readable text.</p>
+
+    <h2>Step 5 - Clear Your Temp Files</h2>
+
+    <p>Temp files build up silently. I had nearly <strong>4GB</strong> sitting in mine. They don't cause slowdowns by existing, but they waste drive space and can slow down antivirus scans. Clean them out:</p>
+
+    <div class="code-block">
+      Remove-Item $env:TEMP\* -Recurse -Force -ErrorAction SilentlyContinue
+    </div>
+
+    <p>Some files will be locked by running processes and won't delete - that's fine, PowerShell skips them. Run this periodically or stick it in a scheduled task.</p>
+
+    <h2>What I Didn't Touch</h2>
+
+    <p>A few things worth mentioning that I left alone:</p>
+
+    <p><strong>SysMain (Superfetch)</strong> - already disabled on my machine. If you're on <strong>SSDs</strong>, disable it. If you're still on <strong>HDDs</strong>, leave it on. It preloads frequently used apps into RAM and genuinely helps on spinning disks.</p>
+
+    <p><strong>Windows Search indexing</strong> - leave it on. The performance impact is minimal and the search speed difference is real.</p>
+
+    <p><strong>Xbox Game DVR</strong> - already off. If yours is on and you're not using it, turn it off. It hooks into <strong>every game</strong> and records in the background whether you asked it to or not.</p>
+
+    <h2>The Result</h2>
+
+    <p>Cleaner boot. Fewer background processes competing for resources. GPU scheduler doing its job properly. None of these are miracle fixes - but combined they add up to a machine that gets out of its own way when you're trying to play.</p>
+
+    <p>No overclock. No third-party tools. No sketchy registry packs downloaded from a forum. Just Windows doing what it should have done by default.</p>
+
+  </div>
+
+
+  <!-- COMMENTS -->
+  <div class="comments-section">
+    <h2 class="comments-title">// Comments</h2>
+    <div id="remark42"></div>
+  </div>
+
+  <div class="article-footer">
+    <a href="/#blog" class="back-btn">Back to blog</a>
+    <span class="share-text">// STR1X3VO.XYZ</span>
+  </div>
+
+</main>
+
+<script src="main.js?v=6"></script>
+<script>
+  var remark_config = {
+    host: "https://str1x3vo.xyz",
+    site_id: "str1x3vo",
+    url: window.location.href,
+    components: ["embed"],
+    theme: "dark"
+  };
+  (function(c) {
+    for (var i = 0; i < c.length; i++) {
+      var d = document, s = d.createElement("script");
+      s.src = remark_config.host + "/api/remark42/web/" + c[i] + ".js?v=20260425a";
+      s.defer = true;
+      (d.head || d.body).appendChild(s);
+    }
+  })(remark_config.components);
+</script>
+</body>
+</html>
+
+
+
+

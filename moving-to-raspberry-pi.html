@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Why STR1X3VO is moving off the gaming PC and onto a Raspberry Pi 3 for quieter, lower-power 24/7 hosting.">
+<link rel="canonical" href="https://str1x3vo.xyz/moving-to-raspberry-pi">
+<meta property="og:site_name" content="STR1X3VO">
+<meta property="og:title" content="The Pi That's Been Sitting in My Drawer for Months">
+<meta property="og:description" content="Why STR1X3VO is moving off the gaming PC and onto a Raspberry Pi 3 for quieter, lower-power 24/7 hosting.">
+<meta property="og:url" content="https://str1x3vo.xyz/moving-to-raspberry-pi">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://str1x3vo.xyz/images/site-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Pi That's Been Sitting in My Drawer for Months">
+<meta name="twitter:description" content="Why STR1X3VO is moving off the gaming PC and onto a Raspberry Pi 3 for quieter, lower-power 24/7 hosting.">
+<meta name="twitter:image" content="https://str1x3vo.xyz/images/site-preview.png">
+<title>The Pi That's Been Sitting in My Drawer for Months - STR1X3VO</title>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="style.css?v=8">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<nav>
+  <a href="/" class="nav-logo">STR1X3VO</a>
+  <a href="/#blog" class="nav-back">Back to blog</a>
+</nav>
+
+<main id="main" class="article-wrapper">
+  <div class="article-crumbs">
+    <a href="/#blog">Blog</a>
+    <span>/</span>
+    <span>The Pi That's Been Sitting in My Drawer for Months</span>
+  </div>
+
+  <span class="article-tag">News</span>
+  <h1 class="article-title">The Pi That's Been Sitting in My Drawer for Months</h1>
+
+  <div class="article-meta">
+    <div>23 MAR 2026</div>
+    <div>2 MIN READ</div>
+    <div>BY <span>STR1X3VO</span></div>
+  </div>
+
+  <div class="article-body">
+
+    <p>A few months ago my younger brother handed me a Raspberry Pi 3. I said cheers, put it in my desk drawer, and completely forgot about it. It's been sat there ever since - next to some old cables, a broken mouse and whatever else ends up in that drawer.</p>
+
+    <p>That changes now.</p>
+
+    <div class="callout">
+      <strong>// The plan</strong>
+      This site is currently running off my main gaming PC inside a Kali Linux VM. The Pi is taking over. Dedicated, low power, always-on hosting - from a board that's been gathering dust for months.
+    </div>
+
+    <h2>Why it's actually perfect for this</h2>
+
+    <p>I didn't realise it at the time but a Raspberry Pi 3 is basically ideal for what I need. It pulls around <strong>3 watts</strong> under load. It runs Linux natively - no VM needed. It can sit in the corner of my room, plugged in, running Nginx and the Cloudflare Tunnel 24/7 without making a sound or costing anything noticeable on the electric bill.</p>
+
+    <p>Right now if I shut my gaming PC down, the site goes offline. That's not great. The Pi fixes that completely - the site stays up whether I'm gaming, sleeping or the PC is off entirely.</p>
+
+    <h2>What's actually changing</h2>
+
+    <p>From your end - nothing. Same domain, same URLs, same everything. The only difference is where the server physically lives. Instead of a VM on my gaming rig, it'll be a credit card sized board running the whole thing natively.</p>
+
+    <p>There'll be a short window of downtime during the switchover but I'll keep it minimal. Once it's live I'll write up the full setup guide - how I got Nginx, the Cloudflare Tunnel and everything else running on the Pi from scratch.</p>
+
+    <h2>Cheers for the Pi, bro</h2>
+
+    <p>Genuinely would not have thought to do this if my brother hadn't just handed it to me. Sometimes the best hardware is the stuff someone else gives you for free.</p>
+
+    <div class="callout">
+      <strong>// Stay tuned</strong>
+      The full Raspberry Pi setup guide drops once the migration is done. Follow on Twitch or join the Discord to catch it when it goes live.
+    </div>
+
+  </div>
+
+
+  <!-- COMMENTS -->
+  <div class="comments-section">
+    <h2 class="comments-title">// Comments</h2>
+    <div id="remark42"></div>
+  </div>
+
+  <div class="article-footer">
+    <a href="/#blog" class="back-btn">Back to blog</a>
+    <span class="share-text">// STR1X3VO.XYZ</span>
+  </div>
+
+</main>
+
+<script src="main.js?v=6"></script>
+<script>
+  var remark_config = {
+    host: "https://str1x3vo.xyz",
+    site_id: "str1x3vo",
+    url: window.location.href,
+    components: ["embed"],
+    theme: "dark"
+  };
+  (function(c) {
+    for (var i = 0; i < c.length; i++) {
+      var d = document, s = d.createElement("script");
+      s.src = remark_config.host + "/api/remark42/web/" + c[i] + ".js?v=20260425a";
+      s.defer = true;
+      (d.head || d.body).appendChild(s);
+    }
+  })(remark_config.components);
+</script>
+</body>
+</html>
+
+
+
+

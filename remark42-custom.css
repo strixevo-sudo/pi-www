@@ -1,0 +1,18 @@
+.dropdown__title {
+    color: #00ff88 !important;
+    border-color: rgba(0, 255, 136, 0.4) !important;
+}
+.dropdown__title:hover {
+    border-color: #00ff88 !important;
+}
+.dropdown__item {
+    color: #e0e0e0 !important;
+}
+.dropdown__item:hover {
+    color: #00ff88 !important;
+    background: rgba(0, 255, 136, 0.08) !important;
+}
+.dropdown__content {
+    background: #0f0f0f !important;
+    border: 1px solid rgba(0, 255, 136, 0.2) !important;
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="How I built and self-hosted STR1X3VO from scratch with nginx, Cloudflare Tunnel, and my own hardware.">
+<link rel="canonical" href="https://str1x3vo.xyz/how-i-set-up-my-website">
+<meta property="og:site_name" content="STR1X3VO">
+<meta property="og:title" content="How I Set Up My Self-Hosted Website From Scratch">
+<meta property="og:description" content="How I built and self-hosted STR1X3VO from scratch with nginx, Cloudflare Tunnel, and my own hardware.">
+<meta property="og:url" content="https://str1x3vo.xyz/how-i-set-up-my-website">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://str1x3vo.xyz/images/site-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How I Set Up My Self-Hosted Website From Scratch">
+<meta name="twitter:description" content="How I built and self-hosted STR1X3VO from scratch with nginx, Cloudflare Tunnel, and my own hardware.">
+<meta name="twitter:image" content="https://str1x3vo.xyz/images/site-preview.png">
+<title>How I Set Up My Self-Hosted Website From Scratch - STR1X3VO</title>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="style.css?v=8">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<nav>
+  <a href="/" class="nav-logo">STR1X3VO</a>
+  <a href="/#blog" class="nav-back">Back to blog</a>
+</nav>
+
+<main id="main" class="article-wrapper">
+  <div class="article-crumbs">
+    <a href="/#blog">Blog</a>
+    <span>/</span>
+    <span>How I Set Up My Self-Hosted Website From Scratch</span>
+  </div>
+
+  <span class="article-tag">Guide</span>
+
+  <h1 class="article-title">How I Set Up My Self-Hosted Website From Scratch</h1>
+
+  <div class="article-meta">
+    <div>22 MAR 2026</div>
+    <div>5 MIN READ</div>
+    <div>BY <span>STR1X3VO</span></div>
+  </div>
+
+  <div class="article-body">
+
+    <p>I wanted my own website. Not a Wix site, not a Squarespace subscription, not paying GBP 10 a month to host a few HTML files. I wanted something I actually owned and controlled, running off my own hardware.</p>
+
+    <p>So I built one. From scratch. Off my bedroom PC. And it cost me <strong>GBP 1.97</strong>.</p>
+
+    <div class="cost-box">
+      <span class="cost-num">GBP 1.97</span>
+      <span class="cost-label">Total cost - domain name only</span>
+    </div>
+
+    <p>Here's exactly how I did it.</p>
+
+    <h2>Step 1 - Setting up the OS</h2>
+
+    <p>I already had Windows on my main PC so I installed <strong>Kali Linux</strong> inside <strong>VirtualBox</strong> - a free virtualisation tool that lets you run a second operating system inside a window. Kali isn't really designed as a server OS but it works fine for this.</p>
+
+    <p>The important thing in VirtualBox is to set the network adapter to <strong>Bridged mode</strong> - this gives the VM its own IP address on your real network instead of hiding behind NAT. Without this, nothing outside the VM can reach your server.</p>
+
+    <h2>Step 2 - Installing Nginx</h2>
+
+    <p>Nginx is the web server - it's the software that actually serves your HTML files to people who visit your site. Installing it on Kali is one command:</p>
+
+    <div class="code-block">
+      sudo apt install nginx -y<br>
+      sudo service nginx start
+    </div>
+
+    <p>Once it's running, visiting <strong>http://your-local-ip</strong> in a browser shows the Nginx welcome page. That means it's working.</p>
+
+    <h2>Step 3 - The CGNAT problem</h2>
+
+    <p>Here's where most people get stuck. My ISP is <strong>YouFibre</strong>, and like a lot of modern ISPs they use something called <strong>CGNAT</strong> - Carrier Grade NAT. Basically multiple customers share the same public IP address, which means you can't port forward. You literally cannot open a port on your router to let people connect to your home server.</p>
+
+    <p>Normal solution: pay for a static IP. I didn't want to do that.</p>
+
+    <div class="callout">
+      <strong>// What is CGNAT</strong>
+      Instead of giving every customer their own public IP address, your ISP puts multiple customers behind one shared IP. This saves them money but breaks port forwarding completely.
+    </div>
+
+    <h2>Step 4 - Cloudflare Tunnel</h2>
+
+    <p>The solution is <strong>Cloudflare Tunnel</strong>. Instead of people connecting directly to your PC, your PC connects outbound to Cloudflare's network, and Cloudflare handles all the incoming traffic. No open ports needed at all.</p>
+
+    <p>Installing it:</p>
+
+    <div class="code-block">
+      wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -O cloudflared<br>
+      chmod +x cloudflared<br>
+      sudo mv cloudflared /usr/local/bin/
+    </div>
+
+    <p>Then log in to your Cloudflare account and create a tunnel:</p>
+
+    <div class="code-block">
+      cloudflared tunnel login<br>
+      cloudflared tunnel create mytunnel<br>
+      cloudflared tunnel run mytunnel
+    </div>
+
+    <p>To make it start automatically on boot:</p>
+
+    <div class="code-block">
+      sudo cloudflared service install<br>
+      sudo service cloudflared start
+    </div>
+
+    <h2>Step 5 - Getting a domain</h2>
+
+    <p>I bought <strong>str1x3vo.xyz</strong> from <strong>Porkbun</strong> for <strong>GBP 1.97</strong>. That's the only money I spent on this entire project.</p>
+
+    <p>Once you have a domain, go to <strong>Cloudflare</strong>, add it as a site, and update the nameservers at Porkbun to point to Cloudflare. This can take a few hours to propagate.</p>
+
+    <h2>Step 6 - Connecting everything</h2>
+
+    <p>Once Cloudflare has your domain active, connect the tunnel to it:</p>
+
+    <div class="code-block">
+      cloudflared tunnel route dns mytunnel str1x3vo.xyz
+    </div>
+
+    <p>That's it. Cloudflare handles the SSL certificate automatically. Your site is now live at <strong>https://str1x3vo.xyz</strong> - served from your bedroom PC, with HTTPS, for free.</p>
+
+    <h2>The result</h2>
+
+    <p>A fully self-hosted website, running 24/7 off my home PC, on my own domain, with HTTPS. Zero monthly fees. The only cost was the domain name - <strong>GBP 1.97 for a year</strong>.</p>
+
+    <p>If I can do it with no prior experience, so can you.</p>
+
+  </div>
+
+
+  <!-- COMMENTS -->
+  <div class="comments-section">
+    <h2 class="comments-title">// Comments</h2>
+    <div id="remark42"></div>
+  </div>
+
+  <div class="article-footer">
+    <a href="/#blog" class="back-btn">Back to blog</a>
+    <span class="share-text">// STR1X3VO.XYZ</span>
+  </div>
+
+</main>
+
+<script src="main.js?v=6"></script>
+<script>
+  var remark_config = {
+    host: "https://str1x3vo.xyz",
+    site_id: "str1x3vo",
+    url: window.location.href,
+    components: ["embed"],
+    theme: "dark"
+  };
+  (function(c) {
+    for (var i = 0; i < c.length; i++) {
+      var d = document, s = d.createElement("script");
+      s.src = remark_config.host + "/api/remark42/web/" + c[i] + ".js?v=20260425a";
+      s.defer = true;
+      (d.head || d.body).appendChild(s);
+    }
+  })(remark_config.components);
+</script>
+</body>
+</html>
+
+
+
+
