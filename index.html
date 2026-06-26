@@ -1,215 +1,269 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STR1X3VO — Sim racing, guides, self-hosted builds</title>
-<meta name="description" content="A working portfolio of sim racing setups, self-hosted infrastructure, and the gaming fixes behind them.">
+<title>STRIXEVO — Sim racing, PC optimization, self-hosting</title>
+<meta name="description" content="The creator hub for sim racing, PC optimization, and self-hosting tutorials. Guides, build logs, and configs — self-hosted on a Raspberry Pi.">
+<link rel="canonical" href="https://str1x3vo.xyz/">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:site_name" content="STRIXEVO">
+<meta property="og:title" content="STRIXEVO — Sim racing, PC optimization, self-hosting">
+<meta property="og:description" content="Sim racing. PC optimization. Self-hosting tutorials from a guy who lives in the terminal.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://str1x3vo.xyz/">
+<meta property="og:image" content="https://str1x3vo.xyz/images/site-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="STRIXEVO — Sim racing, PC optimization, self-hosting">
+<meta name="twitter:description" content="Sim racing. PC optimization. Self-hosting tutorials from a guy who lives in the terminal.">
+<meta name="twitter:image" content="https://str1x3vo.xyz/images/site-preview.png">
+
+<!-- Set theme before paint to avoid flash -->
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="style.css?v=10">
+
+<link rel="stylesheet" href="/assets/css/variables.css">
+<link rel="stylesheet" href="/assets/css/reset.css">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/components.css">
+<link rel="stylesheet" href="/assets/css/pages.css">
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to content</a>
 
+<!-- ===================== NAV ===================== -->
 <header class="topbar">
-  <nav>
-    <a href="#" class="logo"><span class="dot"></span> STR1X3VO</a>
-    <div class="nav-right">
-      <ul class="nav-links">
-        <li><a href="#work">Work</a></li>
-        <li><a href="#writing">Writing</a></li>
-        <li><a href="#downloads">Downloads</a></li>
-      </ul>
-      <div class="theme-toggle" role="group" aria-label="Theme">
-        <button type="button" data-theme-set="dark" class="active">Dark</button>
-        <button type="button" data-theme-set="light">Light</button>
+  <nav class="container nav" aria-label="Primary">
+    <a href="/" class="brand" aria-label="STRIXEVO home">
+      <svg class="owl" viewBox="0 0 64 64" fill="currentColor" width="28" height="28" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M32 4C20 4 11 6 11 6L18 18C13 23 11 30 11 37C11 50 20 60 32 60C44 60 53 50 53 37C53 30 51 23 46 18L53 6C53 6 44 4 32 4ZM23 28A8 8 0 1 1 23 44A8 8 0 0 1 23 28ZM41 28A8 8 0 1 1 41 44A8 8 0 0 1 41 28ZM32 40L36 47L28 47Z"/><circle cx="23" cy="36" r="3"/><circle cx="41" cy="36" r="3"/></svg>
+      <span>STRIXEVO</span>
+    </a>
+
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/guides/">Guides</a></li>
+      <li><a href="/setup/">Setup</a></li>
+      <li><a href="/streams/">Streams</a></li>
+      <li><a href="/about.html">About</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <div class="theme-toggle" role="group" aria-label="Colour theme">
+        <button type="button" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" data-theme-set="light" aria-pressed="false">Light</button>
       </div>
+      <a href="#community" class="btn btn-primary desktop-cta">Join Discord</a>
     </div>
   </nav>
-  <div class="splits">
-    <div class="split active" data-target="intro"><span class="split-num">S1</span>Intro</div>
-    <div class="split" data-target="work"><span class="split-num">S2</span>Work</div>
-    <div class="split" data-target="writing"><span class="split-num">S3</span>Writing</div>
-    <div class="split" data-target="downloads"><span class="split-num">S4</span>Downloads</div>
-  </div>
 </header>
 
-<section class="hero" id="intro">
-  <div>
-    <span class="hero-eyebrow">Sim racing · self-hosting · build logs</span>
-    <h1>I build, break, and document the fixes that <span class="accent">actually work.</span></h1>
-    <p class="hero-desc">A working portfolio of sim racing setups, self-hosted infrastructure, and the gaming fixes behind them — written so the next person doesn't have to figure it out from scratch.</p>
-    <div class="hero-stats">
-      <div class="hero-stat"><strong>11</strong><span>Published posts</span></div>
-      <div class="hero-stat"><strong>5</strong><span>Live downloads</span></div>
-      <div class="hero-stat"><strong>Pi 3</strong><span>Self-hosted on</span></div>
+<main id="main">
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <svg class="hero-logo" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M32 4C20 4 11 6 11 6L18 18C13 23 11 30 11 37C11 50 20 60 32 60C44 60 53 50 53 37C53 30 51 23 46 18L53 6C53 6 44 4 32 4ZM23 28A8 8 0 1 1 23 44A8 8 0 0 1 23 28ZM41 28A8 8 0 1 1 41 44A8 8 0 0 1 41 28ZM32 40L36 47L28 47Z"/><circle cx="23" cy="36" r="3"/><circle cx="41" cy="36" r="3"/></svg>
+      <h1>STRIXEVO</h1>
+      <p class="tagline">Performance. Community. Optimization.</p>
+      <p class="lede">Sim racing. PC optimization. Self-hosting tutorials from a guy who lives in the terminal — written so the next person doesn't have to figure it out from scratch.</p>
+      <div class="btn-row">
+        <a href="#community" class="btn btn-primary btn-lg">Join the Discord →</a>
+        <a href="/blog/" class="btn btn-outline btn-lg">Read the blog</a>
+      </div>
+      <div class="scroll-cue" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
     </div>
-    <div class="btn-row">
-      <a href="#work" class="btn btn-primary">View the work</a>
-      <a href="#writing" class="btn btn-outline">Read the journal</a>
-    </div>
+  </section>
+
+  <!-- ===================== LIVE STATUS BAR ===================== -->
+  <!-- MVP: static. Phase 7 wires this to the Twitch API. -->
+  <div class="live-bar">
+    <span class="badge badge-live">Offline</span>
+    <span class="status-text">Next stream: <strong>Friday · 8pm UK</strong> — ACC league night</span>
+    <a href="/streams/" class="link-arrow">Schedule <span class="arrow">→</span></a>
   </div>
 
-  <aside class="telemetry">
-    <div class="telemetry-head">
-      <span class="telemetry-kicker">System status</span>
-      <span class="telemetry-status live">Online</span>
+  <!-- ===================== FEATURED CONTENT ===================== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="kicker">Featured</span>
+          <h2>Start here — the latest and the greatest hits.</h2>
+        </div>
+        <a href="/blog/" class="link-arrow section-lead">View all posts <span class="arrow">→</span></a>
+      </div>
+
+      <div class="grid grid-3">
+        <!-- Card 1 — latest post (links to current root location; Phase 3 moves to /blog/) -->
+        <a class="card feature-card reveal" href="/what-a-design-review-changed.html">
+          <span class="badge badge-accent">Essay</span>
+          <h3>What a Real Design Review Changed on My Website</h3>
+          <p>An outside reviewer tore into the site, and the fixes went deeper than CSS — all the way to the deployment path.</p>
+          <span class="meta"><span>25 Apr 2026</span><span>6 min read</span></span>
+        </a>
+
+        <!-- Card 2 — featured guide -->
+        <a class="card feature-card reveal" href="/moving-to-raspberry-pi.html">
+          <span class="badge badge-advanced">Self-Hosting</span>
+          <h3>How I Migrated My Website to a Raspberry Pi 3</h3>
+          <p>From a blank SD card to a hardened, always-on server — with every command that actually mattered.</p>
+          <span class="meta"><span>25 Apr 2026</span><span>7 min read</span></span>
+        </a>
+
+        <!-- Card 3 — popular walkthrough -->
+        <a class="card feature-card reveal" href="/ac-telemetry-server-setup.html">
+          <span class="badge badge-accent">Sim Racing</span>
+          <h3>Log AC Telemetry and Send It to a Friend</h3>
+          <p>Python installs, firewall rules, and a Cloudflare Tunnel — the full setup for sharing live telemetry.</p>
+          <span class="meta"><span>Walkthrough</span><span>8 min read</span></span>
+        </a>
+      </div>
     </div>
-    <div class="telemetry-speed">
-      <span class="telemetry-speed-value">100%</span>
-      <span class="telemetry-speed-unit">uptime</span>
+  </section>
+
+  <!-- ===================== CATEGORIES ===================== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="kicker">Browse</span>
+          <h2>Pick your lane.</h2>
+        </div>
+        <p class="section-lead">Everything here is live, self-hosted, or shipped — grouped by what you're trying to do.</p>
+      </div>
+
+      <div class="grid grid-4">
+        <a class="card category-tile reveal" href="/blog/#sim-racing">
+          <span class="icon" aria-hidden="true">🏎️</span>
+          <h3>Sim Racing</h3>
+          <span class="count">3 posts</span>
+        </a>
+        <a class="card category-tile reveal" href="/blog/#pc-optimization">
+          <span class="icon" aria-hidden="true">💻</span>
+          <h3>PC Optimization</h3>
+          <span class="count">2 posts</span>
+        </a>
+        <a class="card category-tile reveal" href="/blog/#self-hosting">
+          <span class="icon" aria-hidden="true">🖥️</span>
+          <h3>Self-Hosting</h3>
+          <span class="count">5 posts</span>
+        </a>
+        <a class="card category-tile reveal" href="/setup/">
+          <span class="icon" aria-hidden="true">🔧</span>
+          <h3>Setup &amp; Builds</h3>
+          <span class="count">PC · sim rig</span>
+        </a>
+      </div>
     </div>
-    <p class="telemetry-meta">Self-hosted on a Raspberry Pi 3 behind Cloudflare Tunnel — this site is part of the build, not a mockup.</p>
-    <div class="telemetry-grid">
-      <div class="t-item"><span class="t-label">Host</span><span class="t-value">Raspberry Pi 3B</span></div>
-      <div class="t-item"><span class="t-label">Proxy</span><span class="t-value">Cloudflare Tunnel</span></div>
-      <div class="t-item"><span class="t-label">Server</span><span class="t-value">Nginx · hardened</span></div>
-      <div class="t-item"><span class="t-label">Cost</span><span class="t-value">€0 / month</span></div>
+  </section>
+
+  <!-- ===================== STREAMING / SOCIALS ===================== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="kicker">Live &amp; social</span>
+          <h2>Catch me live or on socials.</h2>
+        </div>
+        <p class="section-lead">League nights, the iRacing grind, and the occasional just-chatting optimization rabbit hole.</p>
+      </div>
+
+      <div class="stream-split">
+        <div class="stream-embed reveal">
+          <span class="badge badge-live">Offline</span>
+          <p class="muted">Next stream Friday at 8pm UK. Twitch player embeds here once live.</p>
+          <!-- TODO: real Twitch channel URL -->
+          <a href="#twitch" class="btn btn-outline">Watch on Twitch</a>
+        </div>
+
+        <div class="stack">
+          <p class="muted">Find me everywhere — same handle, all platforms.</p>
+          <div class="socials-row">
+            <!-- TODO: replace # with real handles -->
+            <a class="social-link" href="#twitch">Twitch</a>
+            <a class="social-link" href="#youtube">YouTube</a>
+            <a class="social-link" href="#tiktok">TikTok</a>
+            <a class="social-link" href="https://github.com/strixevo-sudo">GitHub</a>
+            <a class="social-link" href="#discord">Discord</a>
+          </div>
+        </div>
+      </div>
     </div>
-  </aside>
-</section>
+  </section>
 
-<section class="section" id="work">
-  <div class="section-head">
-    <div>
-      <span class="section-kicker">Selected work</span>
-      <h2 class="section-title">Things I've built, and the stack behind each one.</h2>
+  <!-- ===================== COMMUNITY / DISCORD ===================== -->
+  <section class="section" id="community">
+    <div class="container">
+      <div class="community reveal">
+        <span class="kicker">Community</span>
+        <h2>Join the community</h2>
+        <p>Optimization tips, race with us, share builds, ask questions. The Discord is where most of it actually happens.</p>
+        <p class="member-count"><strong>●</strong> A growing crew of sim racers &amp; tinkerers</p>
+        <!-- TODO: real Discord invite -->
+        <a href="#discord" class="btn btn-primary btn-lg">Join Discord →</a>
+      </div>
     </div>
-    <p class="section-lead">From the site you're looking at to the configs in the downloads — every piece here is live, self-hosted, or shipped.</p>
-  </div>
+  </section>
 
-  <div class="work-grid">
-    <article class="work-card">
-      <div class="work-top"><h3>This site</h3><span class="work-status live">Live</span></div>
-      <p>Self-hosted on a Raspberry Pi 3 behind Cloudflare Tunnel — no monthly hosting fees, fully hardened Nginx setup.</p>
-      <div class="tech-tags"><span class="tech-tag">Nginx</span><span class="tech-tag">Cloudflare Tunnel</span><span class="tech-tag">Raspberry Pi</span></div>
-      <a href="#writing" class="work-link">Read the build log →</a>
-    </article>
+</main>
 
-    <article class="work-card">
-      <div class="work-top"><h3>AC telemetry logger</h3><span class="work-status live">Live</span></div>
-      <p>Logs Assetto Corsa telemetry and ships it to a friend for analysis — full setup walkthrough including firewall rules.</p>
-      <div class="tech-tags"><span class="tech-tag">Python</span><span class="tech-tag">Cloudflare</span></div>
-      <a href="#writing" class="work-link">Read the guide →</a>
-    </article>
-
-    <article class="work-card">
-      <div class="work-top"><h3>AC CSP &amp; video configs</h3><span class="work-status live">Live</span></div>
-      <p>Personal Custom Shaders Patch and video.ini setups — tuned for clean visuals and stable frame pacing on an RTX 3050.</p>
-      <div class="tech-tags"><span class="tech-tag">Config</span><span class="tech-tag">CSP</span></div>
-      <a href="#downloads" class="work-link">Download configs →</a>
-    </article>
-
-    <article class="work-card">
-      <div class="work-top"><h3>PC optimisation guide</h3><span class="work-status live">Live</span></div>
-      <p>A complete Windows 10/11 gaming optimisation guide — no placebo tweaks, just the changes that move the needle.</p>
-      <div class="tech-tags"><span class="tech-tag">Windows</span><span class="tech-tag">PDF</span></div>
-      <a href="#downloads" class="work-link">Get the PDF →</a>
-    </article>
-
-    <article class="work-card">
-      <div class="work-top"><h3>Config &amp; overlay pack</h3><span class="work-status">Soon</span></div>
-      <p>A bundled config and overlay pack for sim racing setups — currently being cleaned up before release.</p>
-      <div class="tech-tags"><span class="tech-tag">Config</span><span class="tech-tag">Overlay</span></div>
-      <a href="#downloads" class="work-link">In progress →</a>
-    </article>
-  </div>
-</section>
-
-<section class="section" id="writing">
-  <div class="section-head">
-    <div>
-      <span class="section-kicker">Writing</span>
-      <h2 class="section-title">Notes from the builds — start with one, then fall into the rest.</h2>
-    </div>
-    <p class="section-lead">Practical posts that help immediately, and a few personal ones that explain how this all came together.</p>
-  </div>
-
-  <div class="feature-grid">
-    <a href="#" class="feature-lead">
-      <span class="feature-meta">Featured essay — 25 Apr 2026 — 6 min read</span>
-      <h3>What a Real Design Review Changed on My Website</h3>
-      <p>An outside reviewer tore into the site, the fixes went deeper than CSS, and the deployment path got cleaned up properly along the way.</p>
-    </a>
-    <div class="feature-side">
-      <a href="#" class="story-card">
-        <span class="story-card-label">Walkthrough</span>
-        <h3>How to Log AC Telemetry and Send It to a Friend</h3>
-        <p>Python installs, firewall rules, Cloudflare Tunnel, and the full setup.</p>
-      </a>
-      <a href="#" class="story-card">
-        <span class="story-card-label">Popular fix</span>
-        <h3>Why Assetto Corsa Was Running at 47 FPS</h3>
-        <p>RTX 3050, CSP preview, Pure, and the exact settings.</p>
-      </a>
-    </div>
-  </div>
-
-  <div class="blog-grid">
-    <a href="#" class="blog-card">
-      <span class="blog-tag">Guide</span>
-      <h3>How I Migrated My Website to a Raspberry Pi 3</h3>
-      <p>From blank SD card to hardened always-on server, with every command that mattered.</p>
-      <div class="blog-meta"><span>25 APR 2026</span><span>7 MIN</span></div>
-    </a>
-    <a href="#" class="blog-card">
-      <span class="blog-tag">Guide</span>
-      <h3>Windows 10 Gaming Optimisations That Actually Matter</h3>
-      <p>No placebo tweaks — just the changes that genuinely get Windows out of your way.</p>
-      <div class="blog-meta"><span>25 MAR 2026</span><span>5 MIN</span></div>
-    </a>
-    <a href="#" class="blog-card">
-      <span class="blog-tag">Personal</span>
-      <h3>The Origin Story</h3>
-      <p>Game Boy at four, getting into PCs, and how all of it fed into building this site.</p>
-      <div class="blog-meta"><span>23 MAR 2026</span><span>6 MIN</span></div>
-    </a>
-  </div>
-</section>
-
-<section class="section" id="downloads">
-  <div class="section-head">
-    <div>
-      <span class="section-kicker">Downloads</span>
-      <h2 class="section-title">Files worth keeping offline.</h2>
-    </div>
-    <p class="section-lead">Configs and guides that are part of the work, not scraps parked under a post.</p>
-  </div>
-
-  <div class="download-list">
-    <div class="download-row">
-      <span class="download-type">INI</span>
-      <div><h3>Assetto Corsa Video Settings</h3><p>Clean visuals and better frame pacing.</p></div>
-      <span class="download-state is-live">Live</span>
-      <a href="#" class="download-btn">Download</a>
-    </div>
-    <div class="download-row">
-      <span class="download-type">INI</span>
-      <div><h3>Assetto Corsa CSP Settings</h3><p>Custom Shaders Patch config, ready to test.</p></div>
-      <span class="download-state is-live">Live</span>
-      <a href="#" class="download-btn">Download</a>
-    </div>
-    <div class="download-row">
-      <span class="download-type">PDF</span>
-      <div><h3>PC Optimisation Guide</h3><p>Full Windows 10/11 gaming optimisation guide.</p></div>
-      <span class="download-state is-live">Live</span>
-      <a href="#" class="download-btn">Download</a>
-    </div>
-    <div class="download-row">
-      <span class="download-type">CFG</span>
-      <div><h3>Config Pack v1.0</h3><p>On the roadmap for a proper drop.</p></div>
-      <span class="download-state">Soon</span>
-      <a href="#" class="download-btn is-disabled">Coming soon</a>
-    </div>
-  </div>
-</section>
-
+<!-- ===================== FOOTER ===================== -->
 <footer class="site-footer">
-  <span>STR1X3VO — SIM RACING, GUIDES, SELF-HOSTED BUILDS</span>
-  <span>str1x3vo.xyz</span>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <a href="/" class="brand" aria-label="STRIXEVO home">
+          <svg class="owl" viewBox="0 0 64 64" fill="currentColor" width="28" height="28" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M32 4C20 4 11 6 11 6L18 18C13 23 11 30 11 37C11 50 20 60 32 60C44 60 53 50 53 37C53 30 51 23 46 18L53 6C53 6 44 4 32 4ZM23 28A8 8 0 1 1 23 44A8 8 0 0 1 23 28ZM41 28A8 8 0 1 1 41 44A8 8 0 0 1 41 28ZM32 40L36 47L28 47Z"/><circle cx="23" cy="36" r="3"/><circle cx="41" cy="36" r="3"/></svg>
+          <span>STRIXEVO</span>
+        </a>
+        <p>Performance. Community. Optimization. Self-hosted on a Raspberry Pi.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/guides/">Guides</a></li>
+          <li><a href="/setup/">Setup</a></li>
+          <li><a href="/streams/">Streams</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#twitch">Twitch</a></li>
+          <li><a href="#youtube">YouTube</a></li>
+          <li><a href="#tiktok">TikTok</a></li>
+          <li><a href="https://github.com/strixevo-sudo">GitHub</a></li>
+          <li><a href="#discord">Discord</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/resources/">Downloads</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/feed.xml">RSS</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 STRIXEVO · Built with too much caffeine</span>
+      <span><a href="https://github.com/strixevo-sudo/pi-www">View source on GitHub</a></span>
+    </div>
+  </div>
 </footer>
 
-<script src="main.js?v=10"></script>
+<script src="/assets/js/main.js"></script>
 </body>
 </html>
