@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>From FiveM Dev to Self-Hosted Website in a Day — STRIXEVO</title>
+<meta name="description" content="What carried over from FiveM development, what did not, and how I went from no web background to a live self-hosted site in a day.">
+<link rel="canonical" href="https://str1x3vo.xyz/blog/from-fivem-to-self-hosted.html">
+<meta property="og:site_name" content="STRIXEVO">
+<meta property="og:title" content="From FiveM Dev to Self-Hosted Website in a Day">
+<meta property="og:description" content="What carried over from FiveM development, what did not, and how I went from no web background to a live self-hosted site in a day.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://str1x3vo.xyz/blog/from-fivem-to-self-hosted.html">
+<meta property="og:image" content="https://str1x3vo.xyz/images/site-preview.png">
+<meta property="article:published_time" content="2026-03-23">
+<meta property="article:section" content="Self-Hosting">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="From FiveM Dev to Self-Hosted Website in a Day">
+<meta name="twitter:description" content="What carried over from FiveM development, what did not, and how I went from no web background to a live self-hosted site in a day.">
+<meta name="twitter:image" content="https://str1x3vo.xyz/images/site-preview.png">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/css/variables.css">
+<link rel="stylesheet" href="/assets/css/reset.css">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/components.css">
+<link rel="stylesheet" href="/assets/css/blog.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="topbar">
+  <nav class="container nav" aria-label="Primary">
+    <a href="/" class="brand" aria-label="STRIXEVO home"><svg class="owl" viewBox="0 0 64 64" fill="currentColor" width="28" height="28" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M32 4C20 4 11 6 11 6L18 18C13 23 11 30 11 37C11 50 20 60 32 60C44 60 53 50 53 37C53 30 51 23 46 18L53 6C53 6 44 4 32 4ZM23 28A8 8 0 1 1 23 44A8 8 0 0 1 23 28ZM41 28A8 8 0 1 1 41 44A8 8 0 0 1 41 28ZM32 40L36 47L28 47Z"/><circle cx="23" cy="36" r="3"/><circle cx="41" cy="36" r="3"/></svg><span>STRIXEVO</span></a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/blog/" aria-current="page">Blog</a></li>
+      <li><a href="/guides/">Guides</a></li>
+      <li><a href="/setup/">Setup</a></li>
+      <li><a href="/streams/">Streams</a></li>
+      <li><a href="/about.html">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="theme-toggle" role="group" aria-label="Colour theme">
+        <button type="button" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" data-theme-set="light" aria-pressed="false">Light</button>
+      </div>
+      <a href="https://discord.gg/tR8xqCy7JJ" class="btn btn-primary desktop-cta">Join Discord</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main" class="article-wrapper">
+  <div class="article-crumbs">
+    <a href="/blog/">Blog</a><span>/</span><span>From FiveM Dev to Self-Hosted Website in a Day</span>
+  </div>
+
+  <span class="article-tag">Self-Hosting</span>
+  <h1 class="article-title">From FiveM Dev to Self-Hosted Website in a Day</h1>
+  <div class="article-meta">
+    <span>23 Mar 2026</span><span>4 min read</span><span>by STRIXEVO</span>
+  </div>
+
+  <div class="article-body">
+
+
+    <p>People see a website like this and assume the person who built it has some kind of formal web development background. Computer science degree, bootcamp, years of grinding tutorials. I have none of that.</p>
+
+    <p>What I do have is years of FiveM development - building scripts, UI panels and server resources for GTA roleplay servers. If you've done FiveM dev you already know Lua, JavaScript and CSS. You just never pointed any of it at a real website before.</p>
+
+    <p>That's exactly where I was. I knew the code. I just had no idea how to actually get a website on the internet.</p>
+
+    <h2>What FiveM actually teaches you</h2>
+
+    <p>FiveM development is more serious than people give it credit for. You're writing <strong>Lua</strong> for server and client side logic, <strong>JavaScript</strong> for NUI interfaces, and <strong>CSS</strong> for styling those interfaces. You deal with events, callbacks, state management, API calls - proper programming concepts.</p>
+
+    <p>The UI work especially translates directly. A FiveM NUI panel is just an HTML page running inside the game engine. If you've built one of those, you've already built a webpage - you just never put it on the internet.</p>
+
+    <div class="callout">
+      <strong>// The gap</strong>
+      Knowing how to write HTML and CSS is only half the job. The part nobody tells you about is how to actually serve those files to the rest of the world. That's where most people get stuck - including me.
+    </div>
+
+    <h2>The bit I didn't know</h2>
+
+    <p>I could write the HTML. I could style it. I could add JavaScript. What I couldn't do was answer the question - <strong>how does someone in another country actually see this file on my PC</strong></p>
+
+    <p>The answer turned out to be three things: <strong>Nginx</strong> to serve the files, <strong>Cloudflare Tunnel</strong> to bypass my ISP's CGNAT and get traffic to my machine without port forwarding, and a <strong>domain name</strong> so people have something to type in the address bar.</p>
+
+    <p>The full breakdown of how I set all that up is in my other post - <a href="/how-i-set-up-my-website">How I Set Up My Self-Hosted Website From Scratch</a>. That covers every command from start to finish.</p>
+
+    <h2>Building the site itself</h2>
+
+    <p>Once the server side was sorted, the actual site came together fast. The FiveM background meant I wasn't learning HTML and CSS from scratch - I was just applying what I already knew in a slightly different context. No game engine wrapper, no NUI restrictions, just a browser and a blank page.</p>
+
+    <p>I used <strong>Claude</strong> to help put it all together - bouncing ideas, generating components, working through the JavaScript. Think of it less like asking an AI to do your homework and more like having a senior dev sat next to you who you can ask anything. The ideas, the direction and the content are all mine. Claude helped me move faster.</p>
+
+    <h2>What I'd tell anyone in the same position</h2>
+
+    <p>If you've done any kind of scripting or modding - FiveM, Minecraft plugins, Roblox, whatever - you're closer to being able to build a website than you think. The code isn't the hard part. It's the server stuff that feels alien at first.</p>
+
+    <p>But it's learnable. I went from no website to a live self-hosted site on my own domain in a single day. The whole thing cost <strong>GBP 1.97</strong>. There's genuinely no excuse not to have your own corner of the internet.</p>
+
+    <div class="callout">
+      <strong>// Start here</strong>
+      Read the website setup guide, grab a cheap domain from Porkbun, and just start. The worst case is you learn something. The best case is you end up with something like this.
+    </div>
+  </div>
+
+  <div class="article-footer">
+    <a href="/blog/" class="back-btn">← Back to blog</a>
+    <span class="share-text">// STR1X3VO.XYZ</span>
+  </div>
+
+  <section class="related">
+    <h2>Keep reading</h2>
+    <div class="grid grid-3">
+        <a class="card post-card" href="/blog/what-a-design-review-changed.html"><span class="badge badge-accent">Self-Hosting</span><h2>What a Real Design Review Changed on My Website</h2><span class="meta"><span>25 Apr 2026</span><span>6 min read</span></span></a>
+        <a class="card post-card" href="/blog/moving-to-raspberry-pi-setup.html"><span class="badge badge-accent">Self-Hosting</span><h2>How I Migrated My Website to a Raspberry Pi 3</h2><span class="meta"><span>25 Mar 2026</span><span>7 min read</span></span></a>
+        <a class="card post-card" href="/blog/day-one-build-log.html"><span class="badge badge-accent">Self-Hosting</span><h2>Day One - The Build Log</h2><span class="meta"><span>23 Mar 2026</span><span>8 min read</span></span></a>
+    </div>
+  </section>
+
+  <div class="comments-section">
+    <h2 class="comments-title">// Comments</h2>
+    <div id="remark42"></div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <a href="/" class="brand" aria-label="STRIXEVO home"><svg class="owl" viewBox="0 0 64 64" fill="currentColor" width="28" height="28" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M32 4C20 4 11 6 11 6L18 18C13 23 11 30 11 37C11 50 20 60 32 60C44 60 53 50 53 37C53 30 51 23 46 18L53 6C53 6 44 4 32 4ZM23 28A8 8 0 1 1 23 44A8 8 0 0 1 23 28ZM41 28A8 8 0 1 1 41 44A8 8 0 0 1 41 28ZM32 40L36 47L28 47Z"/><circle cx="23" cy="36" r="3"/><circle cx="41" cy="36" r="3"/></svg><span>STRIXEVO</span></a>
+        <p>Performance. Community. Optimization. Self-hosted on a Raspberry Pi.</p>
+      </div>
+      <div class="footer-col"><h4>Explore</h4><ul><li><a href="/blog/">Blog</a></li><li><a href="/guides/">Guides</a></li><li><a href="/setup/">Setup</a></li><li><a href="/streams/">Streams</a></li></ul></div>
+      <div class="footer-col"><h4>Connect</h4><ul><li><a href="https://www.twitch.tv/strixevoo">Twitch</a></li><li><a href="https://www.youtube.com/@strixevoo">YouTube</a></li><li><a href="https://www.tiktok.com/@strixevoz">TikTok</a></li><li><a href="https://github.com/strixevo-sudo">GitHub</a></li><li><a href="https://discord.gg/tR8xqCy7JJ">Discord</a></li></ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul><li><a href="/resources/">Downloads</a></li><li><a href="/about.html">About</a></li><li><a href="/feed.xml">RSS</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 STRIXEVO · Built with too much caffeine</span><span><a href="https://github.com/strixevo-sudo/pi-www">View source on GitHub</a></span></div>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js"></script>
+<script>
+  var remark_config = {
+    host: "https://str1x3vo.xyz",
+    site_id: "str1x3vo",
+    url: "https://str1x3vo.xyz/blog/from-fivem-to-self-hosted.html",
+    components: ["embed"],
+    theme: document.documentElement.getAttribute("data-theme") || "dark"
+  };
+  (function(c) {
+    for (var i = 0; i < c.length; i++) {
+      var d = document, s = d.createElement("script");
+      s.src = remark_config.host + "/api/remark42/web/" + c[i] + ".js?v=20260425a";
+      s.defer = true;
+      (d.head || d.body).appendChild(s);
+    }
+  })(remark_config.components);
+</script>
+</body>
+</html>

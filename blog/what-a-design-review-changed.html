@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What a Real Design Review Changed on My Website — STRIXEVO</title>
+<meta name="description" content="What an external design review changed on STR1X3VO, from the visuals to the deployment workflow behind the site.">
+<link rel="canonical" href="https://str1x3vo.xyz/blog/what-a-design-review-changed.html">
+<meta property="og:site_name" content="STRIXEVO">
+<meta property="og:title" content="What a Real Design Review Changed on My Website">
+<meta property="og:description" content="What an external design review changed on STR1X3VO, from the visuals to the deployment workflow behind the site.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://str1x3vo.xyz/blog/what-a-design-review-changed.html">
+<meta property="og:image" content="https://str1x3vo.xyz/images/site-preview.png">
+<meta property="article:published_time" content="2026-04-25">
+<meta property="article:section" content="Self-Hosting">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What a Real Design Review Changed on My Website">
+<meta name="twitter:description" content="What an external design review changed on STR1X3VO, from the visuals to the deployment workflow behind the site.">
+<meta name="twitter:image" content="https://str1x3vo.xyz/images/site-preview.png">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/css/variables.css">
+<link rel="stylesheet" href="/assets/css/reset.css">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/layout.css">
+<link rel="stylesheet" href="/assets/css/components.css">
+<link rel="stylesheet" href="/assets/css/blog.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="topbar">
+  <nav class="container nav" aria-label="Primary">
+    <a href="/" class="brand" aria-label="STRIXEVO home"><svg class="owl" viewBox="0 0 64 64" fill="currentColor" width="28" height="28" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M32 4C20 4 11 6 11 6L18 18C13 23 11 30 11 37C11 50 20 60 32 60C44 60 53 50 53 37C53 30 51 23 46 18L53 6C53 6 44 4 32 4ZM23 28A8 8 0 1 1 23 44A8 8 0 0 1 23 28ZM41 28A8 8 0 1 1 41 44A8 8 0 0 1 41 28ZM32 40L36 47L28 47Z"/><circle cx="23" cy="36" r="3"/><circle cx="41" cy="36" r="3"/></svg><span>STRIXEVO</span></a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/blog/" aria-current="page">Blog</a></li>
+      <li><a href="/guides/">Guides</a></li>
+      <li><a href="/setup/">Setup</a></li>
+      <li><a href="/streams/">Streams</a></li>
+      <li><a href="/about.html">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="theme-toggle" role="group" aria-label="Colour theme">
+        <button type="button" data-theme-set="dark" aria-pressed="true">Dark</button>
+        <button type="button" data-theme-set="light" aria-pressed="false">Light</button>
+      </div>
+      <a href="https://discord.gg/tR8xqCy7JJ" class="btn btn-primary desktop-cta">Join Discord</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main" class="article-wrapper">
+  <div class="article-crumbs">
+    <a href="/blog/">Blog</a><span>/</span><span>What a Real Design Review Changed on My Website</span>
+  </div>
+
+  <span class="article-tag">Self-Hosting</span>
+  <h1 class="article-title">What a Real Design Review Changed on My Website</h1>
+  <div class="article-meta">
+    <span>25 Apr 2026</span><span>6 min read</span><span>by STRIXEVO</span>
+  </div>
+
+  <div class="article-body">
+
+
+    <p>I wanted a real opinion on the site, not just me staring at it until everything looked normal because I built it. So I had an outside reviewer go through <strong>str1x3vo.xyz</strong>, write up the problems, then post the whole thing publicly as a GitHub issue. That turned out to be exactly what the site needed.</p>
+
+    <div class="callout">
+      <strong>// What this covers</strong>
+      An external design audit, the fixes that actually mattered, the infrastructure problem hiding underneath the design notes, and why this site is better because someone else picked holes in it.
+    </div>
+
+    <h2>Why I wanted outside eyes on it</h2>
+
+    <p>When you build your own website, you stop seeing the obvious stuff. You know where every section is, you know what every animation is supposed to do, and you stop noticing the parts that would feel awkward to someone landing on it for the first time.</p>
+
+    <p>That is exactly where an external review helps. Not because every comment is automatically right, but because someone coming in cold spots the things you have become blind to.</p>
+
+    <p>In my case that review lived in <a href="https://github.com/StrixzEvo-sudo/str1x3vo.xyz/issues/1" target="_blank" rel="noopener noreferrer">GitHub issue #1</a>. It started as a baseline audit, then got re-run after the first modernization pass, then got checked again after the follow-up fixes. Proper paper trail. Nothing vague. Everything tied to actual files and actual live behavior.</p>
+
+    <h2>What got called out</h2>
+
+    <p>The first pass was useful because it split the feedback into real problems, smaller polish issues, and style calls. The biggest technical ones were the kind of things that matter more than they look on paper:</p>
+
+    <p><strong>Content hidden without JavaScript.</strong> The reveal animations looked fine when everything loaded normally, but if JavaScript failed then large sections of the page were effectively invisible. That is not a design problem anymore. That is just broken.</p>
+
+    <p><strong>Touch targets and readability.</strong> The mobile nav already got fixed in the main redesign, but the remaining audit still pushed on touch target size, post heading hierarchy, and long-form reading rhythm. Those are the details that separate something that looks nice from something that actually feels finished.</p>
+
+    <p><strong>Font loading and first paint.</strong> The homepage was loading IBM Plex Serif even though it did not use it, fonts were coming in through CSS <strong>@import</strong>, and the hero title briefly rendered as <strong>STR1</strong> before the rest of the name typed in. Small stuff individually. Collectively, they make the site feel less sharp than it should.</p>
+
+    <h2>The fixes that actually mattered</h2>
+
+    <p>The follow-up pass was not a second redesign. It was a cleanup pass. The goal was to keep the better modernized look, then remove the remaining weak points without flattening the site into something generic.</p>
+
+    <div class="code-block">
+      document.documentElement.classList.add('js')<br>
+      .js .reveal { opacity: 0; }<br>
+      --font-display: 'Orbitron', 'Arial Black', sans-serif;<br>
+      style.css?v=7<br>
+      main.js?v=6
+    </div>
+
+    <p>That one group of changes covered a lot of the audit in practice. The page now defaults visible unless JavaScript explicitly enables the reveal behavior. Post headings were given real weight with a top rule and larger type. Nav links were bumped to a proper touch size. The hero paints <strong>X3VO</strong> immediately instead of waiting for the typing effect to catch up.</p>
+
+    <p>I also moved Google Fonts out of CSS and into the HTML heads where they belong. Homepage only loads the faces it actually uses. Article pages still get IBM Plex Serif because that is where it earns its keep.</p>
+
+    <h2>The hidden problem was not design</h2>
+
+    <p>The most important fix from that whole review was not visual at all. The audit spotted that GitHub had the newer site, while the live Pi was still serving old files. That looked like a deployment mistake on the surface. Underneath, it turned into a repo and auth problem.</p>
+
+    <p>The Pi checkout needed repairing, and the Git remote needed to stop depending on a broken HTTPS flow that would have kept nagging for credentials. So the site did not just get prettier. The deployment path got cleaned up too, with the Pi repo repaired and SSH-based GitHub access restored properly.</p>
+
+    <div class="callout">
+      <strong>// The engineering bit</strong>
+      Fixing one ugly button is fine. Fixing the reason your server falls out of sync with GitHub is better. That is the kind of boring fix that saves you time every single time you ship after it.
+    </div>
+
+    <h2>What I did not change</h2>
+
+    <p>This part matters as much as the fixes. I did not blindly accept every suggestion. The stacked <strong>STR1</strong> / <strong>X3VO</strong> hero stayed once the first-paint problem was fixed, because after that it was clearly a style choice, not a rendering artifact. The featured post treatment on the blog grid stayed too, because it is one of the strongest bits of hierarchy on the homepage.</p>
+
+    <p>That is how review should work. You take the useful pressure. You fix what is genuinely weak. You keep the parts that still serve the identity of the site.</p>
+
+    <h2>The result</h2>
+
+    <p>The re-check came back clean. No remaining defects from that audit pass. The reviewer signed off on the live site, not just the repo. The scores moved up again, but more importantly the site now feels tighter in the places people hit first: first paint, mobile interaction, long-form reading, and deployment reliability.</p>
+
+    <p>I also versioned the whole thing properly. There is now a clean chain of tags for the site state before the rework, after the modernization pass, and after the audit-fix pass. That makes rollback and comparison dead simple instead of guesswork.</p>
+
+    <p>So yeah, this post is basically a thank you note to external criticism. It is very easy to say you want feedback. It is harder to put it in public, wire it to the real code, and work through it item by item. But that is exactly what made the site better.</p>
+
+    <div class="callout">
+      <strong>// Final status</strong>
+      External review. Two fix passes. Live Pi back in sync. Version tags in place. Site went from "good enough" to something a lot more deliberate.
+    </div>
+  </div>
+
+  <div class="article-footer">
+    <a href="/blog/" class="back-btn">← Back to blog</a>
+    <span class="share-text">// STR1X3VO.XYZ</span>
+  </div>
+
+  <section class="related">
+    <h2>Keep reading</h2>
+    <div class="grid grid-3">
+        <a class="card post-card" href="/blog/moving-to-raspberry-pi-setup.html"><span class="badge badge-accent">Self-Hosting</span><h2>How I Migrated My Website to a Raspberry Pi 3</h2><span class="meta"><span>25 Mar 2026</span><span>7 min read</span></span></a>
+        <a class="card post-card" href="/blog/day-one-build-log.html"><span class="badge badge-accent">Self-Hosting</span><h2>Day One - The Build Log</h2><span class="meta"><span>23 Mar 2026</span><span>8 min read</span></span></a>
+        <a class="card post-card" href="/blog/from-fivem-to-self-hosted.html"><span class="badge badge-accent">Self-Hosting</span><h2>From FiveM Dev to Self-Hosted Website in a Day</h2><span class="meta"><span>23 Mar 2026</span><span>4 min read</span></span></a>
+    </div>
+  </section>
+
+  <div class="comments-section">
+    <h2 class="comments-title">// Comments</h2>
+    <div id="remark42"></div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <a href="/" class="brand" aria-label="STRIXEVO home"><svg class="owl" viewBox="0 0 64 64" fill="currentColor" width="28" height="28" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M32 4C20 4 11 6 11 6L18 18C13 23 11 30 11 37C11 50 20 60 32 60C44 60 53 50 53 37C53 30 51 23 46 18L53 6C53 6 44 4 32 4ZM23 28A8 8 0 1 1 23 44A8 8 0 0 1 23 28ZM41 28A8 8 0 1 1 41 44A8 8 0 0 1 41 28ZM32 40L36 47L28 47Z"/><circle cx="23" cy="36" r="3"/><circle cx="41" cy="36" r="3"/></svg><span>STRIXEVO</span></a>
+        <p>Performance. Community. Optimization. Self-hosted on a Raspberry Pi.</p>
+      </div>
+      <div class="footer-col"><h4>Explore</h4><ul><li><a href="/blog/">Blog</a></li><li><a href="/guides/">Guides</a></li><li><a href="/setup/">Setup</a></li><li><a href="/streams/">Streams</a></li></ul></div>
+      <div class="footer-col"><h4>Connect</h4><ul><li><a href="https://www.twitch.tv/strixevoo">Twitch</a></li><li><a href="https://www.youtube.com/@strixevoo">YouTube</a></li><li><a href="https://www.tiktok.com/@strixevoz">TikTok</a></li><li><a href="https://github.com/strixevo-sudo">GitHub</a></li><li><a href="https://discord.gg/tR8xqCy7JJ">Discord</a></li></ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul><li><a href="/resources/">Downloads</a></li><li><a href="/about.html">About</a></li><li><a href="/feed.xml">RSS</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 STRIXEVO · Built with too much caffeine</span><span><a href="https://github.com/strixevo-sudo/pi-www">View source on GitHub</a></span></div>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js"></script>
+<script>
+  var remark_config = {
+    host: "https://str1x3vo.xyz",
+    site_id: "str1x3vo",
+    url: "https://str1x3vo.xyz/blog/what-a-design-review-changed.html",
+    components: ["embed"],
+    theme: document.documentElement.getAttribute("data-theme") || "dark"
+  };
+  (function(c) {
+    for (var i = 0; i < c.length; i++) {
+      var d = document, s = d.createElement("script");
+      s.src = remark_config.host + "/api/remark42/web/" + c[i] + ".js?v=20260425a";
+      s.defer = true;
+      (d.head || d.body).appendChild(s);
+    }
+  })(remark_config.components);
+</script>
+</body>
+</html>
