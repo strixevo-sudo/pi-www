@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="currentColor" role="img" aria-label="STRIXEVO owl logo">
+  <!-- Geometric owl silhouette with negative-space eyes + beak -->
+  <path fill-rule="evenodd" clip-rule="evenodd" d="
+    M32 4
+    C20 4 11 6 11 6
+    L18 18
+    C13 23 11 30 11 37
+    C11 50 20 60 32 60
+    C44 60 53 50 53 37
+    C53 30 51 23 46 18
+    L53 6
+    C53 6 44 4 32 4
+    Z
+    M23 28
+    A8 8 0 1 1 23 44
+    A8 8 0 0 1 23 28
+    Z
+    M41 28
+    A8 8 0 1 1 41 44
+    A8 8 0 0 1 41 28
+    Z
+    M32 40
+    L36 47
+    L28 47
+    Z" />
+  <!-- pupils (filled dots inside the cut-out eyes) -->
+  <circle cx="23" cy="36" r="3"/>
+  <circle cx="41" cy="36" r="3"/>
+</svg>
