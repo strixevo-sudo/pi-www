@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>STRIXEVO</title>
+    <link>https://str1x3vo.xyz/</link>
+    <description>Sim racing, PC optimization, and self-hosting — guides, build logs, and configs.</description>
+    <language>en</language>
+    <atom:link href="https://str1x3vo.xyz/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 25 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>What a Real Design Review Changed on My Website</title>
+      <link>https://str1x3vo.xyz/blog/what-a-design-review-changed.html</link>
+      <guid isPermaLink="true">https://str1x3vo.xyz/blog/what-a-design-review-changed.html</guid>
+      <pubDate>Sat, 25 Apr 2026 00:00:00 +0000</pubDate>
+      <description>What an external design review changed on STRIXEVO, from the visuals to the deployment workflow behind the site.</description>
+    </item>
+    <item>
+      <title>How to Log AC Telemetry and Send It to a Friend</title>
+      <link>https://str1x3vo.xyz/blog/ac-telemetry-server-setup.html</link>
+      <guid isPermaLink="true">https://str1x3vo.xyz/blog/ac-telemetry-server-setup.html</guid>
+      <pubDate>Fri, 27 Mar 2026 00:00:00 +0000</pubDate>
+      <description>How I helped tune a remote Assetto Corsa setup by logging telemetry, exporting the data, and reviewing it off-site.</description>
+    </item>
+    <item>
+      <title>Why Assetto Corsa Was Running at 47 FPS (And How I Fixed It)</title>
+      <link>https://str1x3vo.xyz/blog/assettocorsa-fps-fixes.html</link>
+      <guid isPermaLink="true">https://str1x3vo.xyz/blog/assettocorsa-fps-fixes.html</guid>
+      <pubDate>Wed, 25 Mar 2026 00:00:00 +0000</pubDate>
+      <description>A full Assetto Corsa performance audit covering the exact settings and fixes that pulled my rig out of a 47 FPS mess.</description>
+    </item>
+    <item>
+      <title>How I Migrated My Website to a Raspberry Pi 3</title>
+      <link>https://str1x3vo.xyz/blog/moving-to-raspberry-pi-setup.html</link>
+      <guid isPermaLink="true">https://str1x3vo.xyz/blog/moving-to-raspberry-pi-setup.html</guid>
+      <pubDate>Wed, 25 Mar 2026 00:00:00 +0000</pubDate>
+      <description>The full Raspberry Pi 3 migration for STRIXEVO, including every command, problem, and fix from the move.</description>
+    </item>
+    <item>
+      <title>Windows 10 Gaming Optimizations That Actually Matter</title>
+      <link>https://str1x3vo.xyz/blog/windows-10-gaming-optimizations.html</link>
+      <guid isPermaLink="true">https://str1x3vo.xyz/blog/windows-10-gaming-optimizations.html</guid>
+      <pubDate>Wed, 25 Mar 2026 00:00:00 +0000</pubDate>
+      <description>The Windows 10 gaming optimizations I actually use, without placebo tweaks, registry voodoo, or filler.</description>
+    </item>
+    <item>
+      <title>Day One - The Build Log</title>
+      <link>https://str1x3vo.xyz/blog/day-one-build-log.html</link>
+      <guid isPermaLink="true">https://str1x3vo.xyz/blog/day-one-build-log.html</guid>
+      <pubDate>Mon, 23 Mar 2026 00:00:00 +0000</pubDate>
+      <description>The full first-day build log for STRIXEVO, from blank files to a live hardened self-hosted website.</description>
+    </item>
+    <item>
+      <title>From FiveM Dev to Self-Hosted Website in a Day</title>
+      <link>https://str1x3vo.xyz/blog/from-fivem-to-self-hosted.html</link>
+      <guid isPermaLink="true">https://str1x3vo.xyz/blog/from-fivem-to-self-hosted.html</guid>
+      <pubDate>Mon, 23 Mar 2026 00:00:00 +0000</pubDate>
+      <description>What carried over from FiveM development, what did not, and how I went from no web background to a live self-hosted site in a day.</description>
+    </item>
+    <item>
+      <title>The Pi That's Been Sitting in My Drawer for Months</title>
+      <link>https://str1x3vo.xyz/blog/moving-to-raspberry-pi.html</link>
+      <guid isPermaLink="true">https://str1x3vo.xyz/blog/moving-to-raspberry-pi.html</guid>
+      <pubDate>Mon, 23 Mar 2026 00:00:00 +0000</pubDate>
+      <description>Why STRIXEVO is moving off the gaming PC and onto a Raspberry Pi 3 for quieter, lower-power 24/7 hosting.</description>
+    </item>
+    <item>
+      <title>The Origin Story</title>
+      <link>https://str1x3vo.xyz/blog/my-origin-story.html</link>
+      <guid isPermaLink="true">https://str1x3vo.xyz/blog/my-origin-story.html</guid>
+      <pubDate>Mon, 23 Mar 2026 00:00:00 +0000</pubDate>
+      <description>How gaming, PC building, sim racing, and too much spare time turned into STRIXEVO.</description>
+    </item>
+    <item>
+      <title>How I Set Up My Self-Hosted Website From Scratch</title>
+      <link>https://str1x3vo.xyz/blog/how-i-set-up-my-website.html</link>
+      <guid isPermaLink="true">https://str1x3vo.xyz/blog/how-i-set-up-my-website.html</guid>
+      <pubDate>Sun, 22 Mar 2026 00:00:00 +0000</pubDate>
+      <description>How I built and self-hosted STRIXEVO from scratch with nginx, Cloudflare Tunnel, and my own hardware.</description>
+    </item>
+  </channel>
+</rss>

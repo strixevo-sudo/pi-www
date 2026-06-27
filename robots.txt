@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://str1x3vo.xyz/sitemap.xml
