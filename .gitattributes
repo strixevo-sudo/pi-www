@@ -1,0 +1,11 @@
+# Normalise line endings — repo + Pi are served on Linux (LF).
+* text=auto eol=lf
+
+# Binary assets — never touch.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.ico  binary
+*.svg  text eol=lf
+*.pdf  binary
+*.zip  binary

@@ -210,7 +210,7 @@ a.card { display: block; color: inherit; }
   gap: var(--space-12);
   padding-block: var(--space-16) var(--space-12);
 }
-.footer-col h4 {
+.footer-col .footer-h {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   letter-spacing: 0.1em;

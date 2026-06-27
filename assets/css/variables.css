@@ -14,7 +14,7 @@
   --color-accent: #ff006e;         /* pink — primary brand */
   --color-accent-hover: #ff3d8d;   /* brighter pink */
   --color-accent-glow: rgba(255, 0, 110, 0.28);
-  --color-on-accent: #ffffff;      /* text on pink fills */
+  --color-on-accent: #000000;      /* black on hot-pink fills — passes AA (5.5:1) */
 
   --color-secondary: #00d4ff;      /* cyan — secondary accent */
   --color-secondary-hover: #5ce3ff;
@@ -23,7 +23,7 @@
 
   --color-text-primary: #f4f4f8;   /* near-white */
   --color-text-secondary: #9a9aae; /* muted metadata */
-  --color-text-tertiary: #5c5c70;  /* captions */
+  --color-text-tertiary: #7a7a90;  /* captions — AA on black (≈5:1) */
 
   --color-border: #1c1c26;         /* subtle borders */
   --color-border-strong: #2c2c3a;
@@ -113,7 +113,7 @@
 
   --color-text-primary: #14171f;
   --color-text-secondary: #555c6b;
-  --color-text-tertiary: #8a909e;
+  --color-text-tertiary: #6b7280;  /* darker for AA on light bg */
 
   --color-border: #e3e5ec;
   --color-border-strong: #d2d5e0;
