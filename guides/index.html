@@ -3,20 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>404 — STRIXEVO</title>
-<meta name="description" content="Signal lost. The page you requested does not exist on STRIXEVO.">
-<link rel="canonical" href="https://str1x3vo.xyz/404.html">
+<title>Guides — STRIXEVO</title>
+<meta name="description" content="Step-by-step tutorials for sim racing, PC optimization, and self-hosting.">
+<link rel="canonical" href="https://str1x3vo.xyz/guides/">
 <meta property="og:site_name" content="STRIXEVO">
-<meta property="og:title" content="404 — STRIXEVO">
-<meta property="og:description" content="Signal lost. The page you requested does not exist on STRIXEVO.">
+<meta property="og:title" content="Guides — STRIXEVO">
+<meta property="og:description" content="Step-by-step tutorials for sim racing, PC optimization, and self-hosting.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://str1x3vo.xyz/404.html">
+<meta property="og:url" content="https://str1x3vo.xyz/guides/">
 <meta property="og:image" content="https://str1x3vo.xyz/images/site-preview.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="404 — STRIXEVO">
-<meta name="twitter:description" content="Signal lost. The page you requested does not exist on STRIXEVO.">
+<meta name="twitter:title" content="Guides — STRIXEVO">
+<meta name="twitter:description" content="Step-by-step tutorials for sim racing, PC optimization, and self-hosting.">
 <meta name="twitter:image" content="https://str1x3vo.xyz/images/site-preview.png">
-<meta name="robots" content="noindex">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,7 +35,7 @@
     <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
     <ul class="nav-links" id="nav-links">
       <li><a href="/blog/">Blog</a></li>
-      <li><a href="/guides/">Guides</a></li>
+      <li><a href="/guides/" aria-current="page">Guides</a></li>
       <li><a href="/setup/">Setup</a></li>
       <li><a href="/streams/">Streams</a></li>
       <li><a href="/about.html">About</a></li>
@@ -50,19 +49,58 @@
     </div>
   </nav>
 </header>
-<main id="main" class="error-page">
-  <div class="error-shell">
-    <svg class="error-owl" viewBox="0 0 64 64" fill="currentColor"  aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M32 4C20 4 11 6 11 6L18 18C13 23 11 30 11 37C11 50 20 60 32 60C44 60 53 50 53 37C53 30 51 23 46 18L53 6C53 6 44 4 32 4ZM23 28A8 8 0 1 1 23 44A8 8 0 0 1 23 28ZM41 28A8 8 0 1 1 41 44A8 8 0 0 1 41 28ZM32 40L36 47L28 47Z"/><circle cx="23" cy="36" r="3"/><circle cx="41" cy="36" r="3"/></svg>
-    <span class="error-label">// Signal lost</span>
-    <div class="error-code">404</div>
-    <h1>This page took the wrong racing line</h1>
-    <p>The route you asked for doesn't exist or has moved. Get back on track below.</p>
-    <div class="error-actions">
-      <a href="/" class="btn btn-primary">Home</a>
-      <a href="/blog/" class="btn btn-outline">Blog</a>
-      <a href="/guides/" class="btn btn-outline">Guides</a>
+<main id="main">
+  <section class="page-hero">
+    <div class="container">
+      <span class="kicker">Guides</span>
+      <h1>Step-by-step, no filler</h1>
+      <p>Practical tutorials for getting things done — sim racing, PC performance, and self-hosting. Each one solves a single problem end to end.</p>
     </div>
-  </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-3">
+        <a class="card post-card" href="/blog/moving-to-raspberry-pi-setup.html">
+          <span class="badge badge-advanced">Advanced · Self-Hosting</span>
+          <h2>Migrate a Website to a Raspberry Pi 3</h2>
+          <p>From a blank SD card to a hardened, always-on server — every command included.</p>
+          <span class="meta"><span>~1 hr</span><span>7 min read</span></span>
+        </a>
+        <a class="card post-card" href="/blog/how-i-set-up-my-website.html">
+          <span class="badge badge-intermediate">Intermediate · Self-Hosting</span>
+          <h2>Self-Host a Website From Scratch</h2>
+          <p>nginx, a Cloudflare Tunnel, and your own hardware — live with HTTPS for the price of a domain.</p>
+          <span class="meta"><span>~45 min</span><span>5 min read</span></span>
+        </a>
+        <a class="card post-card" href="/blog/ac-telemetry-server-setup.html">
+          <span class="badge badge-intermediate">Intermediate · Sim Racing</span>
+          <h2>Log AC Telemetry and Share It</h2>
+          <p>Capture Assetto Corsa telemetry, export it, and review it off-site with a friend.</p>
+          <span class="meta"><span>~30 min</span><span>6 min read</span></span>
+        </a>
+        <a class="card post-card" href="/blog/windows-10-gaming-optimizations.html">
+          <span class="badge badge-beginner">Beginner · PC Optimization</span>
+          <h2>Windows 10 Gaming Optimizations</h2>
+          <p>The tweaks that actually matter — no placebo, no registry voodoo.</p>
+          <span class="meta"><span>~30 min</span><span>5 min read</span></span>
+        </a>
+        <a class="card post-card" href="/blog/assettocorsa-fps-fixes.html">
+          <span class="badge badge-intermediate">Intermediate · Sim Racing</span>
+          <h2>Fix Low Assetto Corsa FPS</h2>
+          <p>A full CSP/Pure performance audit that pulled a rig out of a 47 FPS hole.</p>
+          <span class="meta"><span>~30 min</span><span>6 min read</span></span>
+        </a>
+        <a class="card post-card" href="/blog/from-fivem-to-self-hosted.html">
+          <span class="badge badge-beginner">Beginner · Self-Hosting</span>
+          <h2>From FiveM Dev to Self-Hosted Site</h2>
+          <p>What carries over from game-server dev, and how to ship a live site in a day.</p>
+          <span class="meta"><span>~20 min</span><span>4 min read</span></span>
+        </a>
+      </div>
+      <p class="muted" style="margin-top:var(--space-8)">Looking for the rest? Everything's in the <a href="/blog/" style="color:var(--color-accent)">blog</a>.</p>
+    </div>
+  </section>
 </main>
 <footer class="site-footer">
   <div class="container">

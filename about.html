@@ -3,20 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>404 — STRIXEVO</title>
-<meta name="description" content="Signal lost. The page you requested does not exist on STRIXEVO.">
-<link rel="canonical" href="https://str1x3vo.xyz/404.html">
+<title>About — STRIXEVO</title>
+<meta name="description" content="Who's behind STRIXEVO: sim racing, PC optimization, and self-hosting, served from a Raspberry Pi.">
+<link rel="canonical" href="https://str1x3vo.xyz/about.html">
 <meta property="og:site_name" content="STRIXEVO">
-<meta property="og:title" content="404 — STRIXEVO">
-<meta property="og:description" content="Signal lost. The page you requested does not exist on STRIXEVO.">
+<meta property="og:title" content="About — STRIXEVO">
+<meta property="og:description" content="Who's behind STRIXEVO: sim racing, PC optimization, and self-hosting, served from a Raspberry Pi.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://str1x3vo.xyz/404.html">
+<meta property="og:url" content="https://str1x3vo.xyz/about.html">
 <meta property="og:image" content="https://str1x3vo.xyz/images/site-preview.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="404 — STRIXEVO">
-<meta name="twitter:description" content="Signal lost. The page you requested does not exist on STRIXEVO.">
+<meta name="twitter:title" content="About — STRIXEVO">
+<meta name="twitter:description" content="Who's behind STRIXEVO: sim racing, PC optimization, and self-hosting, served from a Raspberry Pi.">
 <meta name="twitter:image" content="https://str1x3vo.xyz/images/site-preview.png">
-<meta name="robots" content="noindex">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,7 +38,7 @@
       <li><a href="/guides/">Guides</a></li>
       <li><a href="/setup/">Setup</a></li>
       <li><a href="/streams/">Streams</a></li>
-      <li><a href="/about.html">About</a></li>
+      <li><a href="/about.html" aria-current="page">About</a></li>
     </ul>
     <div class="nav-actions">
       <div class="theme-toggle" role="group" aria-label="Colour theme">
@@ -50,19 +49,38 @@
     </div>
   </nav>
 </header>
-<main id="main" class="error-page">
-  <div class="error-shell">
-    <svg class="error-owl" viewBox="0 0 64 64" fill="currentColor"  aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M32 4C20 4 11 6 11 6L18 18C13 23 11 30 11 37C11 50 20 60 32 60C44 60 53 50 53 37C53 30 51 23 46 18L53 6C53 6 44 4 32 4ZM23 28A8 8 0 1 1 23 44A8 8 0 0 1 23 28ZM41 28A8 8 0 1 1 41 44A8 8 0 0 1 41 28ZM32 40L36 47L28 47Z"/><circle cx="23" cy="36" r="3"/><circle cx="41" cy="36" r="3"/></svg>
-    <span class="error-label">// Signal lost</span>
-    <div class="error-code">404</div>
-    <h1>This page took the wrong racing line</h1>
-    <p>The route you asked for doesn't exist or has moved. Get back on track below.</p>
-    <div class="error-actions">
-      <a href="/" class="btn btn-primary">Home</a>
-      <a href="/blog/" class="btn btn-outline">Blog</a>
-      <a href="/guides/" class="btn btn-outline">Guides</a>
+<main id="main">
+  <section class="page-hero">
+    <div class="container">
+      <span class="kicker">About</span>
+      <h1>The night shift for gamers</h1>
+      <p>Sim racing, PC optimization, and self-hosting — documented properly, so the next person doesn't have to start from scratch.</p>
     </div>
-  </div>
+  </section>
+
+  <section class="section">
+    <div class="container prose">
+      <p>I'm Strix. I race in sims, build and tune PCs, and run more of my own infrastructure than is strictly reasonable. STRIXEVO is where all of that lives — the guides, the build logs, the configs, and the occasional rant about a setting that was quietly eating my frames.</p>
+
+      <h2>What STRIXEVO stands for</h2>
+      <p>Three things, in order: <strong>performance</strong> (make the machine get out of your way), <strong>community</strong> (figure it out together, in the open), and <strong>optimization</strong> (no placebo tweaks — only changes that move the needle). If a post can't show the before and after, it doesn't go up.</p>
+
+      <h2>Why a Raspberry Pi?</h2>
+      <p>This whole site is served from a <strong>Raspberry Pi 3B</strong> sitting behind a Cloudflare Tunnel, running a hardened nginx. No monthly hosting bill, no cloud dashboard — just a tiny board doing real work 24/7. It's slower than it could be, and that's the point: if it runs well here, it runs well anywhere. The site is part of the build, not a mockup of one.</p>
+
+      <h2>The stack</h2>
+      <ul>
+        <li><strong>Host:</strong> Raspberry Pi 3B (1GB RAM), self-hosted at home</li>
+        <li><strong>Proxy:</strong> Cloudflare Tunnel — HTTPS for free, no open ports</li>
+        <li><strong>Server:</strong> nginx, hardened, static files only</li>
+        <li><strong>Site:</strong> hand-written HTML/CSS/vanilla JS — no frameworks, no build step</li>
+        <li><strong>Comments:</strong> self-hosted Remark42</li>
+      </ul>
+
+      <h2>Start here</h2>
+      <p>If you want the full backstory, read <a href="/blog/my-origin-story.html">the origin story</a>. If you'd rather just get something working, the <a href="/blog/">blog</a> and <a href="/guides/">guides</a> are where the practical stuff lives. And if you want to race or talk shop, <a href="https://discord.gg/tR8xqCy7JJ">the Discord</a> is where most of it actually happens.</p>
+    </div>
+  </section>
 </main>
 <footer class="site-footer">
   <div class="container">
