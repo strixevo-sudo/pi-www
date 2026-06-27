@@ -1,18 +1,34 @@
+/* Remark42 widget restyle — STRIXEVO pink+cyan-on-black palette.
+   Applied via Remark42's custom-CSS config on the server (see README deploy notes).
+   Cyan accents match the site's "terminal" secondary; surfaces match card bg. */
 .dropdown__title {
-    color: #00ff88 !important;
-    border-color: rgba(0, 255, 136, 0.4) !important;
+    color: #00d4ff !important;
+    border-color: rgba(0, 212, 255, 0.4) !important;
 }
 .dropdown__title:hover {
-    border-color: #00ff88 !important;
+    border-color: #00d4ff !important;
 }
 .dropdown__item {
-    color: #e0e0e0 !important;
+    color: #e0e0e6 !important;
 }
 .dropdown__item:hover {
-    color: #00ff88 !important;
-    background: rgba(0, 255, 136, 0.08) !important;
+    color: #00d4ff !important;
+    background: rgba(0, 212, 255, 0.08) !important;
 }
 .dropdown__content {
-    background: #0f0f0f !important;
-    border: 1px solid rgba(0, 255, 136, 0.2) !important;
+    background: #0a0a0f !important;
+    border: 1px solid rgba(0, 212, 255, 0.2) !important;
+}
+
+/* Primary actions (submit / send) in brand pink */
+.comment-form__button,
+.auth__button {
+    color: #ff006e !important;
+    border-color: rgba(255, 0, 110, 0.45) !important;
+}
+.comment-form__button:hover,
+.auth__button:hover {
+    color: #fff !important;
+    background: #ff006e !important;
+    border-color: #ff006e !important;
 }

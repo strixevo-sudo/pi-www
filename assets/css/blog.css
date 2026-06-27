@@ -100,7 +100,7 @@
   border-radius: var(--radius-sm);
   padding: 0.1em 0.4em;
 }
-.article-body code strong { color: var(--color-accent); font-weight: 500; }
+.article-body code strong { color: var(--color-secondary); font-weight: 500; }
 
 /* Block code — both the simple .code-block and the .code-block-shell variants */
 .code-block,
@@ -115,7 +115,7 @@
 }
 .code-block { padding: var(--space-4) var(--space-6); white-space: pre-wrap; word-break: break-word; }
 .code-block code, .code-block strong { background: none; border: none; padding: 0; }
-.code-block strong { color: var(--color-accent); }
+.code-block strong { color: var(--color-secondary); }
 
 .code-block-shell { position: relative; padding: 0; }
 .code-block-shell pre { margin: 0; padding: var(--space-6); overflow-x: auto; }

@@ -5,31 +5,36 @@
    ============================================================ */
 
 :root {
-  /* --- Color: dark (default) --------------------------------- */
-  --color-bg-primary: #0a0e1a;     /* near-black, blue undertone */
-  --color-bg-secondary: #131829;   /* cards */
-  --color-bg-tertiary: #1a2038;    /* hover / elevated surfaces */
-  --color-bg-inset: #0d1120;       /* code blocks, wells */
+  /* --- Color: dark (default) — pink + cyan on black --------- */
+  --color-bg-primary: #000000;     /* true black */
+  --color-bg-secondary: #0a0a0f;   /* cards */
+  --color-bg-tertiary: #15151e;    /* hover / elevated surfaces */
+  --color-bg-inset: #0c0c12;       /* code blocks, wells */
 
-  --color-accent: #dc143c;         /* crimson — brand */
-  --color-accent-hover: #ff2952;   /* brighter crimson */
-  --color-accent-glow: rgba(220, 20, 60, 0.20);
-  --color-on-accent: #ffffff;      /* text on crimson fills */
+  --color-accent: #ff006e;         /* pink — primary brand */
+  --color-accent-hover: #ff3d8d;   /* brighter pink */
+  --color-accent-glow: rgba(255, 0, 110, 0.28);
+  --color-on-accent: #ffffff;      /* text on pink fills */
 
-  --color-text-primary: #f0f2f8;   /* near-white */
-  --color-text-secondary: #a0a8b8; /* muted metadata */
-  --color-text-tertiary: #6b7280;  /* captions */
+  --color-secondary: #00d4ff;      /* cyan — secondary accent */
+  --color-secondary-hover: #5ce3ff;
+  --color-secondary-glow: rgba(0, 212, 255, 0.24);
+  --color-on-secondary: #000000;   /* text on cyan fills */
 
-  --color-border: #252b3d;         /* subtle borders */
-  --color-border-strong: #313a52;
+  --color-text-primary: #f4f4f8;   /* near-white */
+  --color-text-secondary: #9a9aae; /* muted metadata */
+  --color-text-tertiary: #5c5c70;  /* captions */
+
+  --color-border: #1c1c26;         /* subtle borders */
+  --color-border-strong: #2c2c3a;
 
   --color-success: #10b981;
   --color-warning: #f59e0b;
-  --color-live: #ff2952;           /* "LIVE" indicator */
+  --color-live: #00d4ff;           /* "LIVE" indicator — cyan */
 
   /* --- Gradients -------------------------------------------- */
-  --gradient-hero: radial-gradient(120% 120% at 50% 0%, #1a0a14 0%, var(--color-bg-primary) 60%);
-  --gradient-accent: linear-gradient(90deg, #dc143c 0%, #ff2952 100%);
+  --gradient-hero: radial-gradient(110% 110% at 50% 0%, rgba(255, 0, 110, 0.14) 0%, rgba(0, 212, 255, 0.06) 35%, var(--color-bg-primary) 68%);
+  --gradient-accent: linear-gradient(90deg, #ff006e 0%, #00d4ff 100%);
   --gradient-card: linear-gradient(180deg, var(--color-bg-secondary) 0%, var(--color-bg-primary) 100%);
 
   /* --- Typography ------------------------------------------- */
@@ -96,10 +101,15 @@
   --color-bg-tertiary: #eef0f5;
   --color-bg-inset: #f1f2f6;
 
-  --color-accent: #c20e30;
-  --color-accent-hover: #dc143c;
-  --color-accent-glow: rgba(220, 20, 60, 0.16);
+  --color-accent: #d6005c;         /* deeper pink for AA on white */
+  --color-accent-hover: #ff006e;
+  --color-accent-glow: rgba(255, 0, 110, 0.18);
   --color-on-accent: #ffffff;
+
+  --color-secondary: #0094b8;      /* darker cyan for contrast on white */
+  --color-secondary-hover: #00b3dd;
+  --color-secondary-glow: rgba(0, 148, 184, 0.16);
+  --color-on-secondary: #ffffff;
 
   --color-text-primary: #14171f;
   --color-text-secondary: #555c6b;
@@ -108,7 +118,9 @@
   --color-border: #e3e5ec;
   --color-border-strong: #d2d5e0;
 
-  --gradient-hero: radial-gradient(120% 120% at 50% 0%, #fde8ec 0%, var(--color-bg-primary) 55%);
+  --color-live: #0094b8;
+
+  --gradient-hero: radial-gradient(120% 120% at 50% 0%, rgba(255, 0, 110, 0.10) 0%, rgba(0, 148, 184, 0.05) 38%, var(--color-bg-primary) 60%);
   --gradient-card: linear-gradient(180deg, #ffffff 0%, #f7f7fa 100%);
 
   --shadow-sm: 0 1px 2px rgba(20, 23, 31, 0.06);
