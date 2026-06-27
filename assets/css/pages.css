@@ -17,8 +17,9 @@
   padding-block: var(--space-32) var(--space-24);
 }
 .hero-logo {
-  width: 96px; height: 96px;
-  filter: drop-shadow(0 0 28px var(--color-accent-glow));
+  width: clamp(140px, 20vw, 180px);
+  height: clamp(140px, 20vw, 180px);
+  filter: drop-shadow(0 0 36px var(--color-accent-glow));
   animation: hero-in var(--transition-slow) var(--easing-bounce) both;
 }
 .hero h1 {
