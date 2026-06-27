@@ -298,7 +298,7 @@
 <script src="/assets/js/main.js"></script>
 <script>
   var remark_config = {
-    host: "https://str1x3vo.xyz",
+    host: "https://str1x3vo.xyz/api/remark42",
     site_id: "str1x3vo",
     url: "https://str1x3vo.xyz/blog/moving-to-raspberry-pi-setup.html",
     components: ["embed"],
@@ -307,7 +307,7 @@
   (function(c) {
     for (var i = 0; i < c.length; i++) {
       var d = document, s = d.createElement("script");
-      s.src = remark_config.host + "/api/remark42/web/" + c[i] + ".js?v=20260425a";
+      s.src = remark_config.host + "/web/" + c[i] + ".js?v=20260425a";
       s.defer = true;
       (d.head || d.body).appendChild(s);
     }
