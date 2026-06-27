@@ -18,9 +18,7 @@
 }
 .hero-logo {
   width: 96px; height: 96px;
-  border-radius: 20px;
-  color: var(--color-accent);
-  filter: drop-shadow(0 0 24px var(--color-accent-glow));
+  filter: drop-shadow(0 0 28px var(--color-accent-glow));
   animation: hero-in var(--transition-slow) var(--easing-bounce) both;
 }
 .hero h1 {
@@ -220,7 +218,7 @@
   background: var(--gradient-hero);
 }
 .error-shell { display: flex; flex-direction: column; align-items: center; gap: var(--space-4); }
-.error-owl { width: 88px; height: 88px; border-radius: 18px; color: var(--color-accent); filter: drop-shadow(0 0 24px var(--color-accent-glow)); }
+.error-owl { width: 88px; height: 88px; filter: drop-shadow(0 0 24px var(--color-accent-glow)); }
 .error-code {
   font-family: var(--font-display);
   font-weight: 700;

@@ -127,7 +127,6 @@ a.card { display: block; color: inherit; }
   letter-spacing: -0.01em;
 }
 .brand svg, .brand img { width: 28px; height: 28px; }
-.brand img.owl { border-radius: 6px; }
 .brand .owl { color: var(--color-accent); }
 
 .nav-links {
