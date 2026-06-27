@@ -1,34 +1,56 @@
-/* Remark42 widget restyle — STRIXEVO pink+cyan-on-black palette.
-   Applied via Remark42's custom-CSS config on the server (see README deploy notes).
-   Cyan accents match the site's "terminal" secondary; surfaces match card bg. */
-.dropdown__title {
-    color: #00d4ff !important;
-    border-color: rgba(0, 212, 255, 0.4) !important;
-}
-.dropdown__title:hover {
-    border-color: #00d4ff !important;
-}
-.dropdown__item {
-    color: #e0e0e6 !important;
-}
-.dropdown__item:hover {
-    color: #00d4ff !important;
-    background: rgba(0, 212, 255, 0.08) !important;
-}
-.dropdown__content {
-    background: #0a0a0f !important;
-    border: 1px solid rgba(0, 212, 255, 0.2) !important;
+/* ============================================================
+   STRIXEVO — Remark42 widget restyle (pink + cyan on dark)
+   Injected into the same-origin comment iframe by the post pages
+   (Remark42 renders in an iframe; page <link> can't reach it).
+   Selectors verified against /api/remark42/web/remark.css.
+
+   WCAG AA on Remark42's dark theme:
+   - cyan #00d4ff for text/links (high contrast)
+   - pink #ff006e only as a BUTTON BACKGROUND with black text (5.5:1)
+     (pink as text on the dark widget bg is ~4.4:1, just under AA)
+   ============================================================ */
+
+/* ---- Sort dropdown ---- */
+.dropdown__title { color: #00d4ff !important; border-color: rgba(0, 212, 255, 0.4) !important; }
+.dropdown__title:hover { border-color: #00d4ff !important; }
+.dropdown__content { background: #0a0a0f !important; border: 1px solid rgba(0, 212, 255, 0.25) !important; }
+.dropdown__item { color: #e0e0e6 !important; }
+.dropdown__item:hover { color: #00d4ff !important; background: rgba(0, 212, 255, 0.08) !important; }
+
+/* ---- Comment metadata + action links -> cyan ---- */
+.comment__username,
+.comment__title-link,
+.comment__action,
+.comment__control,
+.comment-form__markdown-link,
+.comment-form__rss-link,
+.comment-form__rss-dropdown__link { color: #00d4ff !important; }
+.comment__username:hover,
+.comment__title-link:hover,
+.comment__action:hover,
+.comment__control:hover { color: #5ce3ff !important; }
+
+/* ---- Textarea / input focus accent ---- */
+.comment-form__field:focus,
+.comment-form__field:focus-visible {
+  border-color: #00d4ff !important;
+  outline-color: #00d4ff !important;
 }
 
-/* Primary actions (submit / send) in brand pink */
-.comment-form__button,
-.auth__button {
-    color: #ff006e !important;
-    border-color: rgba(255, 0, 110, 0.45) !important;
+/* ---- Buttons ---- */
+/* generic (preview, etc.) -> cyan text */
+.comment-form__button { color: #00d4ff !important; }
+
+/* primary send + subscribe -> pink fill, black text (AA 5.5:1) */
+.comment-form__button_type_send,
+.comment-form__subscribe-by-email__button {
+  background: #ff006e !important;
+  border-color: #ff006e !important;
+  color: #000000 !important;
 }
-.comment-form__button:hover,
-.auth__button:hover {
-    color: #fff !important;
-    background: #ff006e !important;
-    border-color: #ff006e !important;
+.comment-form__button_type_send:hover,
+.comment-form__subscribe-by-email__button:hover {
+  background: #ff3d8d !important;
+  border-color: #ff3d8d !important;
+  color: #000000 !important;
 }

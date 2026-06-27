@@ -221,5 +221,29 @@
     }
   })(remark_config.components);
 </script>
+<script>
+/* STRIXEVO: inject brand CSS into the same-origin Remark42 iframe.
+   Page <link> can't style the iframe; this does. No-op cross-origin (localhost). */
+(function () {
+  function inject(ifr) {
+    try {
+      var d = ifr.contentDocument; if (!d || !d.head) return false;
+      if (d.getElementById("strix-remark-css")) return true;
+      var l = d.createElement("link");
+      l.id = "strix-remark-css"; l.rel = "stylesheet"; l.href = "/remark42-custom.css";
+      d.head.appendChild(l); return true;
+    } catch (e) { return true; } /* cross-origin -> stop trying */
+  }
+  function scan() {
+    var root = document.getElementById("remark42"); if (!root) return;
+    root.querySelectorAll("iframe").forEach(function (ifr) {
+      if (!inject(ifr)) ifr.addEventListener("load", function () { inject(ifr); }, { once: true });
+    });
+  }
+  var root = document.getElementById("remark42");
+  if (root) new MutationObserver(scan).observe(root, { childList: true, subtree: true });
+  var n = 0, t = setInterval(function () { scan(); if (++n > 20) clearInterval(t); }, 500);
+})();
+</script>
 </body>
 </html>
